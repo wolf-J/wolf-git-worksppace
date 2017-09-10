@@ -1,2 +1,2 @@
-Gir is a verdion control system.
+Gir is a distributed verdion control system.
 Git is free software.
