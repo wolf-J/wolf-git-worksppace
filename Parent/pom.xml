@@ -39,8 +39,6 @@
 	</build>
 
 	<modules>
-		<module>../Common</module>
-
 		<module>Common</module>
 	</modules>
 </project>
