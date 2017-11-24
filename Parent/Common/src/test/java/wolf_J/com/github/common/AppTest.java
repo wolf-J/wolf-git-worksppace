@@ -1,4 +1,4 @@
-package wolf_J.com.github.Common;
+package wolf_J.com.github.common;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
