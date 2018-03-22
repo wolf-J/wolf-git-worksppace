@@ -40,5 +40,6 @@
 
 	<modules>
 		<module>Common</module>
+		<module>Web</module>
 	</modules>
 </project>
