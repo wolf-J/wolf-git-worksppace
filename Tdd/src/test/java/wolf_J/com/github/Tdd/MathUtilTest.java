@@ -4,6 +4,8 @@
 package wolf_J.com.github.Tdd;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,4 +71,13 @@ public class MathUtilTest {
 		assertEquals(2d, MathUtil.median(scores), _0_01D);
 	}
 
+	@Test
+	public void should_be_true_when_given_4_and_2000() {
+		assertTrue(MathUtil.isMod(4, 2000));
+	}
+
+	@Test
+	public void should_be_false_when_given_3_and_1999() {
+		assertFalse(MathUtil.isMod(3, 1999));
+	}
 }
