@@ -10,10 +10,14 @@ import java.util.List;
  * @author wolf-J
  *
  */
+/**
+ * @author wolf-J
+ *
+ */
 public class MathUtil {
 
 	/**
-	 * @param scores
+	 * @param values
 	 * @return
 	 */
 	public static double total(List<Double> values) {
@@ -25,7 +29,7 @@ public class MathUtil {
 	}
 
 	/**
-	 * @param scores
+	 * @param values
 	 * @return
 	 */
 	public static double average(List<Double> values) {
@@ -36,15 +40,25 @@ public class MathUtil {
 		return total / values.size();
 	}
 
+
 	/**
-	 * @param scores
+	 * @param values
 	 * @return
 	 */
 	public static double median(List<Double> values) {
 		int size = values.size();
-		if (!Mod.isMod(2, size))
+		if (!MathUtil.isMod(2, size))
 			return values.get(size / 2);
 		return (values.get((size-1)/2)+values.get((size+1)/2))/2;
+	}
+
+	/**
+	 * @param denominator
+	 * @param divisor
+	 * @return
+	 */
+	public static boolean isMod(int denominator, int divisor) {
+		return divisor % denominator == 0;
 	}
 
 }

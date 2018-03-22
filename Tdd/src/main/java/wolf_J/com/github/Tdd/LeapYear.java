@@ -10,16 +10,16 @@ package wolf_J.com.github.Tdd;
 public class LeapYear {
 
 	/**
-	 * @param i
+	 * @param year
 	 * @return
 	 */
 	public static boolean isLeapYear(int year) {
-		if (Mod.isMod(100, year)) {
-			if (Mod.isMod(400, year))
+		if (MathUtil.isMod(100, year)) {
+			if (MathUtil.isMod(400, year))
 				return true;
 			return false;
 		}
-		return Mod.isMod(4, year);
+		return MathUtil.isMod(4, year);
 	}
 
 }

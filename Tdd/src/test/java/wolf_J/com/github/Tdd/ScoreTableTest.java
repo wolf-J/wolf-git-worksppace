@@ -19,7 +19,6 @@ public class ScoreTableTest {
 	/**
 	 * 
 	 */
-	private static final double _0_01D = 0.01d;
 
 	@Test
 	public void total_average_should_be_327point5() {
@@ -27,7 +26,7 @@ public class ScoreTableTest {
 		studentScores.add(new StudentScore("zhangsan", 95d, 80d, 75d, 80d));
 		studentScores.add(new StudentScore("lisi", 80d, 70d, 85d, 90d));
 		ScoreTable scoreTable = new ScoreTable(studentScores);
-		assertEquals(327.5d, scoreTable.getTotalAverage(), _0_01D);
+		assertEquals(327.5d, scoreTable.getTotalAverage(), 0.01);
 	}
 
 	@Test
@@ -36,7 +35,6 @@ public class ScoreTableTest {
 		studentScores.add(new StudentScore("zhangsan", 95d, 80d, 75d, 80d));
 		studentScores.add(new StudentScore("lisi", 80d, 70d, 85d, 90d));
 		ScoreTable scoreTable = new ScoreTable(studentScores);
-		System.err.println(scoreTable.toString());
 		assertEquals(0,
 				scoreTable.toString().compareTo("Scoretable:\n" + "Name|Math|Chinese|English|Programing|Average|Total\n"
 						+ "======================================\n" + "zhangsan|75.0|95.0|80.0|80.0|82.5|330.0\n"

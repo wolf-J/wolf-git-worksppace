@@ -173,7 +173,7 @@ public class StudentScore {
 	}
 
 	/**
-	 * 
+	 * @return
 	 */
 	public double getTotal() {
 		List<Double> Scores = new ArrayList<Double>();
