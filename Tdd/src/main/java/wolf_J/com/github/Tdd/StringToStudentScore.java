@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_J.com.github.Tdd;
+package wolf_j.com.github.tdd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,12 @@ public class StringToStudentScore {
 	 * @return
 	 * @throws Exception
 	 */
+	/**
+	 * 
+	 */
+	private StringToStudentScore() {
+	}
+
 	public static List<StudentScore> convertStringToStudentScore(String studentScoreString) throws Exception {
 		List<StudentScore> studentScores = new ArrayList<>();
 		String[] studentScoresString = studentScoreString.trim().split("(\\[\n\\[)|(\\]\n\\])|(\\],\n\\[)", 0);

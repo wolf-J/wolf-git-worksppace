@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_J.com.github.Tdd;
+package wolf_j.com.github.tdd;
 
 import static org.junit.jupiter.api.Assertions.*;
 

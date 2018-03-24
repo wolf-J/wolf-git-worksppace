@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_J.com.github.Tdd;
+package wolf_j.com.github.tdd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,9 +160,7 @@ public class StudentScore {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (Double.doubleToLongBits(programingScore) != Double.doubleToLongBits(other.programingScore))
-			return false;
-		return true;
+		return Double.doubleToLongBits(programingScore) == Double.doubleToLongBits(other.programingScore);
 	}
 
 	/**
@@ -176,9 +174,9 @@ public class StudentScore {
 	 * @return
 	 */
 	public double getTotal() {
-		List<Double> Scores = new ArrayList<Double>();
-		Scores.add(this.getChineseScore() + this.getEnglishScore() + this.getProgramingScore() + this.getMathScore());
-		return MathUtil.total(Scores);
+		List<Double> scores = new ArrayList<>();
+		scores.add(this.getChineseScore() + this.getEnglishScore() + this.getProgramingScore() + this.getMathScore());
+		return MathUtil.total(scores);
 	}
 
 }

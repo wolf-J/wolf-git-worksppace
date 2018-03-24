@@ -1,9 +1,8 @@
 /**
  * 
  */
-package wolf_J.com.github.Tdd;
+package wolf_j.com.github.tdd;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,8 +19,12 @@ public class MathUtil {
 	 * @param values
 	 * @return
 	 */
+	private MathUtil() {
+
+	}
+
 	public static double total(List<Double> values) {
-		Double total = new Double(0);
+		Double total = Double.valueOf(0);
 		for (Double value : values) {
 			total += value;
 		}
@@ -33,13 +36,12 @@ public class MathUtil {
 	 * @return
 	 */
 	public static double average(List<Double> values) {
-		Double total = new Double(0);
+		Double total = Double.valueOf(0);
 		for (Double value : values) {
 			total += value;
 		}
 		return total / values.size();
 	}
-
 
 	/**
 	 * @param values
@@ -49,7 +51,7 @@ public class MathUtil {
 		int size = values.size();
 		if (!MathUtil.isMod(2, size))
 			return values.get(size / 2);
-		return (values.get((size-1)/2)+values.get((size+1)/2))/2;
+		return (values.get((size - 1) / 2) + values.get((size + 1) / 2)) / 2;
 	}
 
 	/**

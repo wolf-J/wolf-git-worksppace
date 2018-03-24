@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_J.com.github.Tdd;
+package wolf_j.com.github.tdd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class ScoreTable {
 	 * @return
 	 */
 	public double getTotalAverage() {
-		Double totalAverage = new Double(0);
+		Double totalAverage = Double.valueOf(0);
 		for (StudentScore studentScore : studentScores) {
 			totalAverage += studentScore.getTotal();
 		}
@@ -48,7 +48,7 @@ public class ScoreTable {
 	 */
 	@Override
 	public String toString() {
-		StringBuffer stringBuffer = new StringBuffer();
+		StringBuilder stringBuffer = new StringBuilder();
 		stringBuffer.append("Scoretable:\n" + "Name|Math|Chinese|English|Programing|Average|Total\n"
 				+ "======================================\n");
 		for (StudentScore studentScore : studentScores) {

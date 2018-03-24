@@ -1,4 +1,4 @@
-package wolf_J.com.github.Tdd;
+package wolf_j.com.github.tdd;
 
 /**
  * Hello world!
