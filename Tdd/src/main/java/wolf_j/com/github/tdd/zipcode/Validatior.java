@@ -34,6 +34,8 @@ public class Validatior {
 	 * @return
 	 */
 	private static boolean isBarCode(String code) {
+		if(code.length()==32 || code.length()==52)
+			return true;
 		return false;
 	}
 

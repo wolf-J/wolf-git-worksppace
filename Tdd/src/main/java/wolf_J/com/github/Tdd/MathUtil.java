@@ -19,9 +19,6 @@ public class MathUtil {
 	 * @param values
 	 * @return
 	 */
-	private MathUtil() {
-
-	}
 
 	public static double total(List<Double> values) {
 		Double total = Double.valueOf(0);

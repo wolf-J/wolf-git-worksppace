@@ -20,8 +20,6 @@ public class StringToStudentScore {
 	/**
 	 * 
 	 */
-	private StringToStudentScore() {
-	}
 
 	public static List<StudentScore> convertStringToStudentScore(String studentScoreString) throws Exception {
 		List<StudentScore> studentScores = new ArrayList<>();

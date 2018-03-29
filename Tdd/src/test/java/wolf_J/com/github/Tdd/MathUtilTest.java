@@ -61,6 +61,7 @@ public class MathUtilTest {
 		assertEquals(4d, MathUtil.median(scores), _0_01D);
 	}
 
+	@Test
 	public void median_should_be_2() {
 		List<Double> scores = new ArrayList<>();
 		scores.add(1d);
