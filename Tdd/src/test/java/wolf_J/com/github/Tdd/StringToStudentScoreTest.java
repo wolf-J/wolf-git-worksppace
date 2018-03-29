@@ -35,5 +35,10 @@ public class StringToStudentScoreTest {
 		assertEquals(new StudentScore("zhangsan", 95d, 80d, 75d, 80d), studentScores.get(0));
 		assertEquals(new StudentScore("lisi", 80d, 70d, 85d, 90d), studentScores.get(1));
 	}
-
+	
+	@Test
+	public void should_be_throws_Exception_when_given_error_StudentScoreList( ) throws Exception {
+		String studentScoreString = "";
+		assertThrows(Exception.class, () -> {StringToStudentScore.convertStringToStudentScore(studentScoreString).get(0);});
+	}
 }

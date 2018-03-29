@@ -8,6 +8,12 @@ package wolf_j.com.github.tdd;
  *
  */
 public class LeapYear {
+	
+	/**
+	 * 
+	 */
+	private LeapYear() {
+	}
 
 	/**
 	 * @param year

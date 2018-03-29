@@ -14,7 +14,12 @@ import java.util.List;
  *
  */
 public class MathUtil {
-
+	
+	/**
+	 * 
+	 */
+	private MathUtil() {
+	}
 	/**
 	 * @param values
 	 * @return
