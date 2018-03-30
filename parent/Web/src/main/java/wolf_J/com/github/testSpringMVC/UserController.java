@@ -1,17 +1,13 @@
 /**
  * 
  */
-package wolf_j.com.github.testSpringmvc;
+package wolf_j.com.github.testspringmvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.fasterxml.jackson.core.JsonFactory;
-
-import redis.clients.jedis.Response;
 
 /**
  * @author wolf-J
@@ -29,7 +25,6 @@ public class UserController {
 
     @RequestMapping("/save")
     public String save(@ModelAttribute("user") User user) { // user:视图层传给控制层的表单对象；model：控制层返回给视图层的对象
-        //model.addAttribute("user", user);
         return "detail";
     }
     

@@ -29,7 +29,6 @@ public class TestThread implements Runnable {
 	 * 
 	 */
 	public TestThread(String value) {
-		// TODO Auto-generated constructor stub
 		this.value = value;
 	}
 
@@ -40,7 +39,6 @@ public class TestThread implements Runnable {
 	 */
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < 10; i++) {
 			System.out.println(value + i);
 		}

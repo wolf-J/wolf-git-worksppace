@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.testSpringmvc;
+package wolf_j.com.github.testspringmvc;
 
 import java.io.Serializable;
 import java.util.Date;
