@@ -9,6 +9,11 @@ package wolf_j.com.github.tdd.zipcode;
  */
 public class ZipCode {
 
+	/**
+	 * 
+	 */
+	private static final String ZIPCODE_SEPARATOR = "-";
+
 	private String value;
 
 	/**
@@ -34,7 +39,7 @@ public class ZipCode {
 	 */
 	private String format(String zipCodeNumber) {
 		if (zipCodeNumber.length() == 9)
-			return zipCodeNumber.substring(0, 5) + "_" + zipCodeNumber.substring(5);
+			return zipCodeNumber.substring(0, 5) + ZipCode.ZIPCODE_SEPARATOR + zipCodeNumber.substring(5);
 		return zipCodeNumber;
 	}
 
@@ -55,7 +60,7 @@ public class ZipCode {
 	/**
 	 * @param input
 	 * @return
-	 * @throws Throwable 
+	 * @throws Throwable
 	 */
 	public static ZipCode convertBarCodeToZipCode(BarCode barCode) throws Throwable {
 		return new ZipCode(barCode.getBodyNumber());
@@ -66,6 +71,13 @@ public class ZipCode {
 	 */
 	public String getValue() {
 		return value;
+	}
+
+	public String getValueNumber() {
+		if (value.contains(ZipCode.ZIPCODE_SEPARATOR))
+			return value.replace(ZipCode.ZIPCODE_SEPARATOR, "");
+		return value;
+
 	}
 
 }

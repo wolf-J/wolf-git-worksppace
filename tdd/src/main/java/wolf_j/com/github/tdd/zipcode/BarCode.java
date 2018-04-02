@@ -79,7 +79,15 @@ public class BarCode {
 	 */
 	public static BarCode convertZipCodeToBarCode(ZipCode zipCode) throws Throwable {
 		StringBuilder barCode = new StringBuilder(BarCode.PRE_AND_POST_FIX);
-
+		String bodyNumber = zipCode.getValueNumber();
+		Integer total = 0;
+		for (int i = 0; i < bodyNumber.length(); i++) {
+			String singleNumber = Character.toString(bodyNumber.charAt(i));
+			String singleBody = CodeMap.CODE_MAP.get(singleNumber);
+			barCode.append(singleBody);
+			total += Integer.valueOf(singleNumber);
+		}
+		barCode.append(CodeMap.CODE_MAP.get(Integer.toString(Math.abs(10-total%10))));
 		barCode.append(BarCode.PRE_AND_POST_FIX);
 		return new BarCode(barCode.toString());
 

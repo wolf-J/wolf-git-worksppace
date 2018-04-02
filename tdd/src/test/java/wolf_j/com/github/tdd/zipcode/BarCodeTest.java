@@ -22,10 +22,6 @@ class BarCodeTest {
 	 * Test method for
 	 * {@link wolf_j.com.github.tdd.zipcode.BarCode#BarCode(java.lang.String)}.
 	 */
-	@Test
-	void testBarCode() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	void testGetValue() {
@@ -49,9 +45,9 @@ class BarCodeTest {
 	}
 
 	@Test
-	@DisplayName("isBarCode(\"|:|:|::|:|:||:::||:::::||:|:::||\") == False")
+	@DisplayName("isBarCode(\"|:|:|::|:|:||:::||:::::||:|:::||\") == True")
 	void testIsBarCode_when_given_five_number_barcode() {
-		assertFalse(BarCode.isBarCode("|:|:|::|:|:||:::||:::::||:|:::||"));
+		assertTrue(BarCode.isBarCode("|:|:|::|:|:||:::||:::::||:|:::||"));
 	}
 
 	/**
@@ -61,7 +57,7 @@ class BarCodeTest {
 	 */
 	@Test
 	void testConvertZipCodeToBarCode() throws Throwable {
-		assertEquals("|:|:|::|:|:||:::||:::::||:|:::||", BarCode.convertZipCodeToBarCode(new ZipCode("55003")));
+		assertEquals("|:|:|::|:|:||:::||:::::||:|:::||", BarCode.convertZipCodeToBarCode(new ZipCode("55003")).getValue());
 	}
 
 }
