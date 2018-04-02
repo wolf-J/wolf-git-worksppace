@@ -3,6 +3,7 @@
  */
 package wolf_j.com.github.tdd.zipcode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -12,6 +13,8 @@ import java.util.HashMap;
 public class CodeMap {
 
 	static final HashMap<String, String> CODE_MAP = new HashMap<>();
+	
+	static final ArrayList<Integer> ZIPCODE_NUMBER_RANGE = new ArrayList<>();
 
 	static {
 		CodeMap.CODE_MAP.put("0", "||:::");
@@ -24,6 +27,9 @@ public class CodeMap {
 		CodeMap.CODE_MAP.put("7", "|:::|");
 		CodeMap.CODE_MAP.put("8", "|::|:");
 		CodeMap.CODE_MAP.put("9", "|:|::");
+		
+		ZIPCODE_NUMBER_RANGE.add(5);
+		ZIPCODE_NUMBER_RANGE.add(9);
 	}
 
 }

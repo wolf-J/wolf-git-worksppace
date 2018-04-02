@@ -16,25 +16,17 @@ public class BarCode {
 	/**
 	 * 
 	 */
-	private static final String PRE_AND_END_FIX = "|";
-	static {
-		CodeMap.CODE_MAP.put("0", "||:::");
-		CodeMap.CODE_MAP.put("1", ":::||");
-		CodeMap.CODE_MAP.put("2", "::|:|");
-		CodeMap.CODE_MAP.put("3", "::||:");
-		CodeMap.CODE_MAP.put("4", ":|::|");
-		CodeMap.CODE_MAP.put("5", ":|:|:");
-		CodeMap.CODE_MAP.put("6", ":||::");
-		CodeMap.CODE_MAP.put("7", "|:::|");
-		CodeMap.CODE_MAP.put("8", "|::|:");
-		CodeMap.CODE_MAP.put("9", "|:|::");
-	}
+	private static final int BARCODE_MAP_ZIP_NUMBER = 5;
+
+	/**
+	 * 
+	 */
+	private static final String PRE_AND_POST_FIX = "|";
 
 	private String value;
 
 	/**
-	 * @throws Throwable
-	 * 			@throws
+	 * @throws Throwable @throws
 	 * 
 	 */
 	public BarCode(String value) throws Throwable {
@@ -49,24 +41,24 @@ public class BarCode {
 	 * @return
 	 */
 	public static boolean isBarCode(String code) {
-		if (code.startsWith(PRE_AND_END_FIX) && code.endsWith(PRE_AND_END_FIX)) {
+		if (code.startsWith(PRE_AND_POST_FIX) && code.endsWith(PRE_AND_POST_FIX)) {
 			String body = getBody(code);
-			Integer numberOfBody = (body.length()) / 5;
+			Integer numberOfBody = (body.length()) / BarCode.BARCODE_MAP_ZIP_NUMBER;
+			if (!CodeMap.ZIPCODE_NUMBER_RANGE.contains(numberOfBody))
+				return false;
 			Integer total = 0;
 			for (int i = 0; i < numberOfBody; i++) {
-				String singleValue = body.substring(i * 5, i * 5 + 5);
+				String singleValue = body.substring(i * BarCode.BARCODE_MAP_ZIP_NUMBER,
+						i * BarCode.BARCODE_MAP_ZIP_NUMBER + BarCode.BARCODE_MAP_ZIP_NUMBER);
 				String singleValueNumber = getKeyfromCodeMap(singleValue);
 				if (singleValueNumber == null || singleValueNumber.isEmpty()) {
 					return false;
 				}
 				total += Integer.valueOf(singleValueNumber);
 			}
-			if ((total + Integer.valueOf(getKeyfromCodeMap(
-					getValidationKey(code))))
-					% 10 == 0) {
+			if ((total + Integer.valueOf(getKeyfromCodeMap(getValidationKey(code)))) % 10 == 0) {
 				return true;
 			}
-			System.err.println(total);
 		}
 		return false;
 	}
@@ -76,7 +68,8 @@ public class BarCode {
 	 * @return
 	 */
 	static String getValidationKey(String barCodeValue) {
-		return barCodeValue.substring(barCodeValue.lastIndexOf(PRE_AND_END_FIX) - 5, barCodeValue.lastIndexOf(PRE_AND_END_FIX));
+		return barCodeValue.substring(barCodeValue.lastIndexOf(PRE_AND_POST_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER,
+				barCodeValue.lastIndexOf(PRE_AND_POST_FIX));
 	}
 
 	/**
@@ -85,8 +78,9 @@ public class BarCode {
 	 * @throws Throwable
 	 */
 	public static BarCode convertZipCodeToBarCode(ZipCode zipCode) throws Throwable {
-		StringBuilder barCode = new StringBuilder(BarCode.PRE_AND_END_FIX);
-		barCode.append(BarCode.PRE_AND_END_FIX);
+		StringBuilder barCode = new StringBuilder(BarCode.PRE_AND_POST_FIX);
+
+		barCode.append(BarCode.PRE_AND_POST_FIX);
 		return new BarCode(barCode.toString());
 
 	}
@@ -105,18 +99,18 @@ public class BarCode {
 	private void setValue(String value) {
 		this.value = value;
 	}
-	
-	
+
 	/**
 	 * @return
-	 * @throws Throwable 
+	 * @throws Throwable
 	 */
 	private String getBodyNumber(String barcodeValue) throws Throwable {
 		StringBuilder bodyNumber = new StringBuilder();
 		String body = getBody(barcodeValue);
-		Integer numberOfBody = (body.length()) / 5;
+		Integer numberOfBody = (body.length()) / BarCode.BARCODE_MAP_ZIP_NUMBER;
 		for (int i = 0; i < numberOfBody; i++) {
-			String singleValue = body.substring(i * 5, i * 5 + 5);
+			String singleValue = body.substring(i * BarCode.BARCODE_MAP_ZIP_NUMBER,
+					i * BarCode.BARCODE_MAP_ZIP_NUMBER + BarCode.BARCODE_MAP_ZIP_NUMBER);
 			String singleValueNumber = getKeyfromCodeMap(singleValue);
 			if (singleValueNumber == null || singleValueNumber.isEmpty()) {
 				throw new Exception("Error Barcode!");
@@ -147,12 +141,13 @@ public class BarCode {
 	 * @return
 	 */
 	private static String getBody(String code) {
-		return code.substring(code.indexOf(PRE_AND_END_FIX) + 1, code.lastIndexOf(PRE_AND_END_FIX) - 5);
+		return code.substring(code.indexOf(PRE_AND_POST_FIX) + 1,
+				code.lastIndexOf(PRE_AND_POST_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER);
 	}
 
 	/**
 	 * @return
-	 * @throws Throwable 
+	 * @throws Throwable
 	 */
 	public String getBodyNumber() throws Throwable {
 		return getBodyNumber(getValue());
