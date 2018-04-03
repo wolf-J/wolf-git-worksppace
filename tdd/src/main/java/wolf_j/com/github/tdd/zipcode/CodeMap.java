@@ -35,10 +35,6 @@ public class CodeMap {
 		ZIPCODE_NUMBER_RANGE.add(9);
 	}
 
-	/**
-	 * @param value
-	 * @return
-	 */
 	static String getKeyfromCodeMap(String value) {
 		Iterator<Entry<String, String>> iterator = CODE_MAP.entrySet().iterator();
 		while (iterator.hasNext()) {
@@ -49,10 +45,6 @@ public class CodeMap {
 		return null;
 	}
 
-	/**
-	 * @param key
-	 * @return
-	 */
 	static String getValuefromCodeMap(String key) {
 		return CODE_MAP.get(key);
 	}
