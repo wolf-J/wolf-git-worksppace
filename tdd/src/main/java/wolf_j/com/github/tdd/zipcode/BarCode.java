@@ -46,16 +46,16 @@ public class BarCode {
 		Integer total = 0;
 		for (int i = 0; i < bodyNumber.length(); i++) {
 			String singleNumber = Character.toString(bodyNumber.charAt(i));
-			body.append(CodeMap.getValuefromCodeMap(singleNumber));
+			body.append(CodeRelationShip.getValuefromCodeMap(singleNumber));
 			total += Integer.valueOf(singleNumber);
 		}
-		String validationKey = CodeMap.getValuefromCodeMap(Integer.toString(Math.abs(10 - total % 10)));
+		String validationKey = CodeRelationShip.getValuefromCodeMap(Integer.toString(Math.abs(10 - total % 10)));
 		return body.toString() + validationKey;
 	}
 
 	private static boolean validateBodyNumberLength(String code) throws Throwable {
 		String bodyNumber = convertNumbers(getBody(code));
-		return CodeMap.ZIPCODE_NUMBER_RANGE.contains(bodyNumber.length());
+		return CodeRelationShip.ZIPCODE_NUMBER_RANGE.contains(bodyNumber.length());
 	}
 
 	private static boolean validateKey(String code) throws Throwable {
@@ -84,7 +84,7 @@ public class BarCode {
 	private static String convertNumbers(String body) throws Throwable {
 		StringBuilder numbers = new StringBuilder();
 		for (int i = 0; i < body.length() / BARCODE_MAP_ZIP_NUMBER; i++) {
-			String singleValueNumber = CodeMap
+			String singleValueNumber = CodeRelationShip
 					.getKeyfromCodeMap(body.substring(i * BARCODE_MAP_ZIP_NUMBER, (i + 1) * BARCODE_MAP_ZIP_NUMBER));
 			if (singleValueNumber == null || singleValueNumber.isEmpty())
 				throw new Exception("convert fail!");
