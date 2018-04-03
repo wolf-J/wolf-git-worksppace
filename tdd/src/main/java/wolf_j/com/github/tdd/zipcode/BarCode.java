@@ -3,10 +3,6 @@
  */
 package wolf_j.com.github.tdd.zipcode;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
 /**
  * @author wolf-J
  *
@@ -16,12 +12,13 @@ public class BarCode {
 	/**
 	 * 
 	 */
-	private static final int BARCODE_MAP_ZIP_NUMBER = 5;
+	private static final String PRE_FIX = "|";
+	private static final String POST_FIX = "|";
 
 	/**
 	 * 
 	 */
-	private static final String PRE_AND_POST_FIX = "|";
+	private static final int BARCODE_MAP_ZIP_NUMBER = 5;
 
 	private String value;
 
@@ -31,9 +28,9 @@ public class BarCode {
 	 */
 	public BarCode(String value) throws Throwable {
 		if (isBarCode(value))
-			this.setValue(value);
+			this.value = value;
 		else
-			throw new Exception("This is not a BarCode!");
+			throw new Exception("Please input a right BarCode!");
 	}
 
 	/**
@@ -41,35 +38,17 @@ public class BarCode {
 	 * @return
 	 */
 	public static boolean isBarCode(String code) {
-		if (code.startsWith(PRE_AND_POST_FIX) && code.endsWith(PRE_AND_POST_FIX)) {
-			String body = getBody(code);
-			Integer numberOfBody = (body.length()) / BarCode.BARCODE_MAP_ZIP_NUMBER;
-			if (!CodeMap.ZIPCODE_NUMBER_RANGE.contains(numberOfBody))
+		if (code.startsWith(PRE_FIX) && code.endsWith(POST_FIX)) {
+			try {
+				String bodyNumber = convertNumbers(getBody(code));
+				String keyKumber = convertNumbers(getValidationKey(code));
+				if (validateBodyNumberLength(bodyNumber) && validateKey(bodyNumber, keyKumber))
+					return true;
+			} catch (Throwable e) {
 				return false;
-			Integer total = 0;
-			for (int i = 0; i < numberOfBody; i++) {
-				String singleValue = body.substring(i * BarCode.BARCODE_MAP_ZIP_NUMBER,
-						i * BarCode.BARCODE_MAP_ZIP_NUMBER + BarCode.BARCODE_MAP_ZIP_NUMBER);
-				String singleValueNumber = getKeyfromCodeMap(singleValue);
-				if (singleValueNumber == null || singleValueNumber.isEmpty()) {
-					return false;
-				}
-				total += Integer.valueOf(singleValueNumber);
-			}
-			if ((total + Integer.valueOf(getKeyfromCodeMap(getValidationKey(code)))) % 10 == 0) {
-				return true;
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * @param barCodeValue
-	 * @return
-	 */
-	static String getValidationKey(String barCodeValue) {
-		return barCodeValue.substring(barCodeValue.lastIndexOf(PRE_AND_POST_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER,
-				barCodeValue.lastIndexOf(PRE_AND_POST_FIX));
 	}
 
 	/**
@@ -78,34 +57,57 @@ public class BarCode {
 	 * @throws Throwable
 	 */
 	public static BarCode convertZipCodeToBarCode(ZipCode zipCode) throws Throwable {
-		StringBuilder barCode = new StringBuilder(BarCode.PRE_AND_POST_FIX);
+		StringBuilder barCode = new StringBuilder();
+		barCode.append(BarCode.PRE_FIX);
+		barCode.append(convertToBody(zipCode));
+		barCode.append(BarCode.POST_FIX);
+		return new BarCode(barCode.toString());
+	
+	}
+
+	/**
+	 * @param bodyNumber
+	 * @return
+	 */
+	private static String convertToBody(ZipCode zipCode) {
 		String bodyNumber = zipCode.getValueNumber();
+		StringBuilder body = new StringBuilder();
 		Integer total = 0;
 		for (int i = 0; i < bodyNumber.length(); i++) {
 			String singleNumber = Character.toString(bodyNumber.charAt(i));
-			String singleBody = CodeMap.CODE_MAP.get(singleNumber);
-			barCode.append(singleBody);
+			body.append(CodeMap.getValuefromCodeMap(singleNumber));
 			total += Integer.valueOf(singleNumber);
 		}
-		barCode.append(CodeMap.CODE_MAP.get(Integer.toString(Math.abs(10-total%10))));
-		barCode.append(BarCode.PRE_AND_POST_FIX);
-		return new BarCode(barCode.toString());
-
+		String validationKey = CodeMap.getValuefromCodeMap(Integer.toString(Math.abs(10 - total % 10)));
+		return body.toString() + validationKey;
 	}
 
 	/**
-	 * @return the value
+	 * @param bodyNumber
+	 * @return
 	 */
-	public String getValue() {
-		return value;
+	private static boolean validateBodyNumberLength(String bodyNumber) {
+		return CodeMap.ZIPCODE_NUMBER_RANGE.contains(bodyNumber.length());
 	}
 
 	/**
-	 * @param value
-	 *            the value to set
+	 * @param bodyNumber
+	 * @param keyKumber
+	 * @return
 	 */
-	private void setValue(String value) {
-		this.value = value;
+	private static boolean validateKey(String bodyNumber, String keyKumber) {
+		Integer bodyTotal = 0;
+		for (char c : bodyNumber.toCharArray()) {
+			bodyTotal += Integer.valueOf(Character.toString(c));
+		}
+		return ((Integer.valueOf(keyKumber) + bodyTotal) % 10 == 0) ? true : false;
+	}
+
+	/**
+	 * @return
+	 */
+	private static String getBody(String code) {
+		return code.substring(code.indexOf(PRE_FIX) + 1, code.lastIndexOf(POST_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER);
 	}
 
 	/**
@@ -113,44 +115,33 @@ public class BarCode {
 	 * @throws Throwable
 	 */
 	private String getBodyNumber(String barcodeValue) throws Throwable {
-		StringBuilder bodyNumber = new StringBuilder();
-		String body = getBody(barcodeValue);
-		Integer numberOfBody = (body.length()) / BarCode.BARCODE_MAP_ZIP_NUMBER;
-		for (int i = 0; i < numberOfBody; i++) {
-			String singleValue = body.substring(i * BarCode.BARCODE_MAP_ZIP_NUMBER,
-					i * BarCode.BARCODE_MAP_ZIP_NUMBER + BarCode.BARCODE_MAP_ZIP_NUMBER);
-			String singleValueNumber = getKeyfromCodeMap(singleValue);
-			if (singleValueNumber == null || singleValueNumber.isEmpty()) {
-				throw new Exception("Error Barcode!");
-			}
-			bodyNumber.append(singleValueNumber);
-		}
-		return bodyNumber.toString();
+		return convertNumbers(getBody(barcodeValue));
 	}
 
 	/**
-	 * @param singleValue
+	 * @param barCodeValue
 	 * @return
 	 */
-	static String getKeyfromCodeMap(String singleValue) {
-		Iterator<Entry<String, String>> iterator = CodeMap.CODE_MAP.entrySet().iterator();
-		while (iterator.hasNext()) {
-			Map.Entry<java.lang.String, java.lang.String> entry = (Map.Entry<java.lang.String, java.lang.String>) iterator
-					.next();
-			if (entry.getValue().equals(singleValue)) {
-				return entry.getKey();
-			}
-
-		}
-		return null;
+	private static String getValidationKey(String barCodeValue) {
+		return barCodeValue.substring(barCodeValue.lastIndexOf(PRE_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER,
+				barCodeValue.lastIndexOf(POST_FIX));
 	}
 
 	/**
+	 * @param body
 	 * @return
+	 * @throws Throwable
 	 */
-	private static String getBody(String code) {
-		return code.substring(code.indexOf(PRE_AND_POST_FIX) + 1,
-				code.lastIndexOf(PRE_AND_POST_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER);
+	private static String convertNumbers(String body) throws Throwable {
+		StringBuilder numbers = new StringBuilder();
+		for (int i = 0; i < body.length() / BARCODE_MAP_ZIP_NUMBER; i++) {
+			String singleValueNumber = CodeMap
+					.getKeyfromCodeMap(body.substring(i * BARCODE_MAP_ZIP_NUMBER, (i + 1) * BARCODE_MAP_ZIP_NUMBER));
+			if (singleValueNumber == null || singleValueNumber.isEmpty())
+				throw new Exception("convert fail!");
+			numbers.append(singleValueNumber);
+		}
+		return numbers.toString();
 	}
 
 	/**
@@ -159,6 +150,13 @@ public class BarCode {
 	 */
 	public String getBodyNumber() throws Throwable {
 		return getBodyNumber(getValue());
+	}
+
+	/**
+	 * @return the value
+	 */
+	public String getValue() {
+		return value;
 	}
 
 }

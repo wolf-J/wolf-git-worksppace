@@ -23,15 +23,15 @@ public class ZipCodeTest {
 	}
 	
 	@Test
-	@DisplayName("ZipCode.isZipCode(\"11223_\") == FALSE")
+	@DisplayName("ZipCode.isZipCode(\"11223-\") == FALSE")
 	void testIsZipCode_6number_ZipCode() {
-		assertFalse(ZipCode.isZipCode("11223_"));
+		assertFalse(ZipCode.isZipCode("11223-"));
 	}
 	
 	@Test
-	@DisplayName(value = "ZipCode.isZipCode(\\\"11223_9854\\\") == TRUE")
+	@DisplayName(value = "ZipCode.isZipCode(\\\"11223-9854\\\") == TRUE")
 	void testIsZipCode_10number_right_ZipCode() {
-		assertTrue(ZipCode.isZipCode("11223_9854"));
+		assertTrue(ZipCode.isZipCode("11223-9854"));
 	}
 	
 	@Test

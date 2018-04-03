@@ -14,12 +14,12 @@ public class ZipCode {
 	 */
 	private static final String ZIPCODE_SEPARATOR = "-";
 
-	private String value;
-
 	/**
 	 * 
 	 */
-	private static final String ZIP_CODE_PATTERN = "\\d{5}(_?\\d{4})?";
+	private static final String ZIP_CODE_PATTERN = "\\d{5}(-?\\d{4})?";
+
+	private String value;
 
 	/**
 	 * @param string
@@ -29,19 +29,11 @@ public class ZipCode {
 		if (isZipCode(value)) {
 			this.value = format(value);
 		} else {
-			throw new Exception("ZipCode Input Error!");
+			throw new Exception("Please input a right  ZipCode!");
 		}
 	}
 
-	/**
-	 * @param value2
-	 * @return
-	 */
-	private String format(String zipCodeNumber) {
-		if (zipCodeNumber.length() == 9)
-			return zipCodeNumber.substring(0, 5) + ZipCode.ZIPCODE_SEPARATOR + zipCodeNumber.substring(5);
-		return zipCodeNumber;
-	}
+	
 
 	/**
 	 * @param input
@@ -64,6 +56,18 @@ public class ZipCode {
 	 */
 	public static ZipCode convertBarCodeToZipCode(BarCode barCode) throws Throwable {
 		return new ZipCode(barCode.getBodyNumber());
+	}
+
+
+
+	/**
+	 * @param value2
+	 * @return
+	 */
+	private String format(String zipCodeNumber) {
+		if (zipCodeNumber.length() == 9)
+			return zipCodeNumber.substring(0, 5) + ZipCode.ZIPCODE_SEPARATOR + zipCodeNumber.substring(5);
+		return zipCodeNumber;
 	}
 
 	/**
