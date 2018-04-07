@@ -49,4 +49,6 @@ public class CodeRelationShip {
 		return CODE_MAP.get(key);
 	}
 
+	static final int BARCODE_MAP_ZIP_NUMBER = 5;
+
 }

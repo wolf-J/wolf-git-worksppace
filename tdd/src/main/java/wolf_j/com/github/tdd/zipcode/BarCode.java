@@ -12,8 +12,6 @@ public class BarCode {
 	private static final String PRE_FIX = "|";
 	private static final String POST_FIX = "|";
 
-	private static final int BARCODE_MAP_ZIP_NUMBER = 5;
-
 	private String value;
 
 	public BarCode(String value) throws Throwable {
@@ -69,7 +67,7 @@ public class BarCode {
 	}
 
 	private static String getBody(String code) {
-		return code.substring(code.indexOf(PRE_FIX) + 1, code.lastIndexOf(POST_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER);
+		return code.substring(code.indexOf(PRE_FIX) + 1, code.lastIndexOf(POST_FIX) - CodeRelationShip.BARCODE_MAP_ZIP_NUMBER);
 	}
 
 	private String getBodyNumber(String barcodeValue) throws Throwable {
@@ -77,15 +75,15 @@ public class BarCode {
 	}
 
 	private static String getValidationKey(String barCodeValue) {
-		return barCodeValue.substring(barCodeValue.lastIndexOf(PRE_FIX) - BarCode.BARCODE_MAP_ZIP_NUMBER,
+		return barCodeValue.substring(barCodeValue.lastIndexOf(PRE_FIX) - CodeRelationShip.BARCODE_MAP_ZIP_NUMBER,
 				barCodeValue.lastIndexOf(POST_FIX));
 	}
 
 	private static String convertNumbers(String body) throws Throwable {
 		StringBuilder numbers = new StringBuilder();
-		for (int i = 0; i < body.length() / BARCODE_MAP_ZIP_NUMBER; i++) {
+		for (int i = 0; i < body.length() / CodeRelationShip.BARCODE_MAP_ZIP_NUMBER; i++) {
 			String singleValueNumber = CodeRelationShip
-					.getKeyfromCodeMap(body.substring(i * BARCODE_MAP_ZIP_NUMBER, (i + 1) * BARCODE_MAP_ZIP_NUMBER));
+					.getKeyfromCodeMap(body.substring(i * CodeRelationShip.BARCODE_MAP_ZIP_NUMBER, (i + 1) * CodeRelationShip.BARCODE_MAP_ZIP_NUMBER));
 			if (singleValueNumber == null || singleValueNumber.isEmpty())
 				throw new Exception("convert fail!");
 			numbers.append(singleValueNumber);
