@@ -19,7 +19,7 @@ public class UserController {
 	
 	
     @RequestMapping(value = "")
-    public String Create(Model model) {
+    public String create(Model model) {
         return "create";
     }
 
