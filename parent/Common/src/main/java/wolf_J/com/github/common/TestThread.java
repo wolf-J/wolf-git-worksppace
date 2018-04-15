@@ -9,7 +9,7 @@ package wolf_j.com.github.common;
  */
 public class TestThread implements Runnable {
 
-	String value;
+	private String value;
 
 	/**
 	 * @return the value
@@ -29,7 +29,9 @@ public class TestThread implements Runnable {
 	 * 
 	 */
 	public TestThread(String value) {
-		this.value = value;
+		this.setValue(value);
+		int a= 0;
+		a++;
 	}
 
 	/*
@@ -40,7 +42,7 @@ public class TestThread implements Runnable {
 	@Override
 	public void run() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println(value + i);
+			System.out.println(getValue() + i);
 		}
 	}
 
