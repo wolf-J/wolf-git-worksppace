@@ -179,4 +179,17 @@ public class StudentScore {
 		return MathUtil.total(scores);
 	}
 
+	private String getStudentScoreAndTotal() {
+		return getAverage() + "|" + getTotal() + "\n";
+	}
+
+	private String getStudentScore() {
+		return getName() + "|" + getMathScore() + "|" + getChineseScore() + "|"
+				+ getEnglishScore() + "|" + getProgramingScore() + "|";
+	}
+
+	public String getStudentScores() {
+		return getStudentScore() + getStudentScoreAndTotal();
+	}
+
 }

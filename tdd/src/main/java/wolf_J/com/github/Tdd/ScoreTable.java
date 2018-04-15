@@ -41,26 +41,16 @@ public class ScoreTable {
 		return MathUtil.median(scores);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
+	public String printing() {
 		StringBuilder stringBuffer = new StringBuilder();
 		stringBuffer.append("Scoretable:\n" + "Name|Math|Chinese|English|Programing|Average|Total\n"
 				+ "======================================\n");
 		for (StudentScore studentScore : studentScores) {
-			stringBuffer.append(
-					studentScore.getName() + "|" + studentScore.getMathScore() + "|" + studentScore.getChineseScore()
-							+ "|" + studentScore.getEnglishScore() + "|" + studentScore.getProgramingScore() + "|");
-			stringBuffer.append(studentScore.getAverage() + "|" + studentScore.getTotal() + "\n");
+			stringBuffer.append(studentScore.getStudentScores());
 		}
 		stringBuffer.append("======================================\n");
 		stringBuffer.append("AllTotalAverage: " + this.getTotalAverage() + "\n");
 		stringBuffer.append("AllMedian: " + this.getMedian());
 		return stringBuffer.toString();
-
 	}
 }
