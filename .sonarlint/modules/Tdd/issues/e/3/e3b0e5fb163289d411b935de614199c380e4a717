@@ -1,10 +1,0 @@
-
-nsquid:S1118
-":Add a private constructor to hide the implicit public one.(€€ùÂ8îø¥È¦,H¶RMAJORZ
-CODE_SMELL
-usquid:S1126%"AReplace this if-then-else statement by a single return statement.(æÿ…Ø8¦¿©É¦,HÂRMINORZ
-CODE_SMELL
-usquid:S1126"AReplace this if-then-else statement by a single return statement.(³¡Áæ8²ª¸È¦,H¹RMINORZ
-CODE_SMELL
-zsquid:S1126"AReplace this if-then-else statement by a single return statement.(¦° ”üÿÿÿÿ8îø¥È¦,HµRMINORZ
-CODE_SMELL
