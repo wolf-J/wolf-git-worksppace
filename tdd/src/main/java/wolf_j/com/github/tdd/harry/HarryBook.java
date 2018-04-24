@@ -71,9 +71,7 @@ public class HarryBook extends Book {
 
 	private static int getItemsNumber(Map<HarryBook, Integer> harryBooksTemp) {
 		List<Integer> values = new ArrayList<>(harryBooksTemp.values());
-		values.sort((Integer a, Integer b) -> {
-			return a.compareTo(b);
-		});
+		values.sort((Integer a, Integer b) -> a.compareTo(b));
 		return values.get(0);
 	}
 
