@@ -19,13 +19,6 @@ public class HarryBook extends Book {
 	static HarryBook harryBookE;
 
 	static final double UNITPRICE = 8d;
-	static {
-		HarryBook.harryBookA = new HarryBook("HarryBookA");
-		HarryBook.harryBookB = new HarryBook("HarryBookB");
-		HarryBook.harryBookC = new HarryBook("HarryBookC");
-		HarryBook.harryBookD = new HarryBook("HarryBookD");
-		HarryBook.harryBookE = new HarryBook("HarryBookE");
-	}
 
 	private HarryBook(String name) {
 		this(name, UNITPRICE);
@@ -36,6 +29,14 @@ public class HarryBook extends Book {
 		this.setPrice(price);
 	}
 
+	static {
+		HarryBook.harryBookA = new HarryBook("HarryBookA");
+		HarryBook.harryBookB = new HarryBook("HarryBookB");
+		HarryBook.harryBookC = new HarryBook("HarryBookC");
+		HarryBook.harryBookD = new HarryBook("HarryBookD");
+		HarryBook.harryBookE = new HarryBook("HarryBookE");
+	}
+
 	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
 		Map<HarryBook, Integer> actualHarryBooks = clearEmptyBooks(harryBooks);
 		if (actualHarryBooks.isEmpty())
@@ -44,14 +45,11 @@ public class HarryBook extends Book {
 	}
 
 	private static Map<HarryBook, Integer> clearEmptyBooks(Map<HarryBook, Integer> harryBooks) {
-		Map<HarryBook, Integer> actualHarryBooks = harryBooks;
-		List<HarryBook> removedList = new ArrayList<>();
-		for (Entry<HarryBook, Integer> bookEntry : actualHarryBooks.entrySet()) {
-			if (bookEntry.getValue().equals(0))
-				removedList.add(bookEntry.getKey());
+		Map<HarryBook, Integer> actualHarryBooks = new HashMap<>();
+		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet()) {
+			if (!bookEntry.getValue().equals(0))
+				actualHarryBooks.put(bookEntry.getKey(), bookEntry.getValue());
 		}
-		for (HarryBook harryBook : removedList)
-			actualHarryBooks.remove(harryBook);
 		return actualHarryBooks;
 	}
 
