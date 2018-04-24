@@ -51,20 +51,20 @@ public class HarryBook extends Book {
 
 		Map<HarryBook, Integer> remainingHarryBooks = getRainingHarryBooks(harryBooks, maxItemsNumber);
 
-		int harryBooksSize = harryBooks.size();
-		if (harryBooksSize == 1)
-			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0);
-		if (harryBooksSize == 2)
-			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.05)
+		int harryBooksTypes = harryBooks.size();
+		if (harryBooksTypes == 1)
+			return maxItemsNumber * getPriceOfBook(harryBooksTypes, 0);
+		if (harryBooksTypes == 2)
+			return maxItemsNumber * getPriceOfBook(harryBooksTypes, 0.05)
 					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		if (harryBooksSize == 3)
-			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.10)
+		if (harryBooksTypes == 3)
+			return maxItemsNumber * getPriceOfBook(harryBooksTypes, 0.10)
 					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		if (harryBooksSize == 4)
-			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.20)
+		if (harryBooksTypes == 4)
+			return maxItemsNumber * getPriceOfBook(harryBooksTypes, 0.20)
 					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		if (harryBooksSize == 5)
-			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.25)
+		if (harryBooksTypes == 5)
+			return maxItemsNumber * getPriceOfBook(harryBooksTypes, 0.25)
 					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
 		throw new HarryBookException();
 	}
