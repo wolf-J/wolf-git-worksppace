@@ -37,26 +37,11 @@ public class HarryBook extends Book {
 	}
 
 	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
-
 		Map<HarryBook, Integer> actualHarryBooks = clearEmptyBooks(harryBooks);
-
 		if (actualHarryBooks.isEmpty())
 			return 0;
-
-		int itemsNumber = getItemsNumber(actualHarryBooks);
-		Map<HarryBook, Integer> subHarryBooks = new HashMap<>();
-		for (Entry<HarryBook, Integer> bookEntry : actualHarryBooks.entrySet())
-			subHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - itemsNumber);
-
-		return getTotalPrice(actualHarryBooks, itemsNumber, subHarryBooks);
-	}
-
-	private static int getItemsNumber(Map<HarryBook, Integer> harryBooksTemp) {
-		List<Integer> values = new ArrayList<>(harryBooksTemp.values());
-		values.sort((Integer a, Integer b) -> {
-			return a.compareTo(b);
-		});
-		return values.get(0);
+		int maxItemsNumber = getItemsNumber(actualHarryBooks);
+		return getTotalPrice(actualHarryBooks, maxItemsNumber);
 	}
 
 	private static Map<HarryBook, Integer> clearEmptyBooks(Map<HarryBook, Integer> harryBooks) {
@@ -71,19 +56,36 @@ public class HarryBook extends Book {
 		return harryBooksTemp;
 	}
 
-	private static double getTotalPrice(Map<HarryBook, Integer> harryBooks, int itmsNumber,
-			Map<HarryBook, Integer> subHarryBooks) throws HarryBookException {
+	private static int getItemsNumber(Map<HarryBook, Integer> harryBooksTemp) {
+		List<Integer> values = new ArrayList<>(harryBooksTemp.values());
+		values.sort((Integer a, Integer b) -> {
+			return a.compareTo(b);
+		});
+		return values.get(0);
+	}
+
+	private static double getTotalPrice(Map<HarryBook, Integer> harryBooks, int maxItmsNumber)
+			throws HarryBookException {
+
+		Map<HarryBook, Integer> remainingHarryBooks = new HashMap<>();
+		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet())
+			remainingHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - maxItmsNumber);
+
 		int harryBooksSize = harryBooks.size();
 		if (harryBooksSize == 1)
-			return itmsNumber * getPriceOfBook(harryBooksSize, 0);
+			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0);
 		if (harryBooksSize == 2)
-			return itmsNumber * getPriceOfBook(harryBooksSize, 0.05) + HarryBook.getHarryTotalPrice(subHarryBooks);
+			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.05)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
 		if (harryBooksSize == 3)
-			return itmsNumber * getPriceOfBook(harryBooksSize, 0.10) + HarryBook.getHarryTotalPrice(subHarryBooks);
+			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.10)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
 		if (harryBooksSize == 4)
-			return itmsNumber * getPriceOfBook(harryBooksSize, 0.20) + HarryBook.getHarryTotalPrice(subHarryBooks);
+			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.20)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
 		if (harryBooksSize == 5)
-			return itmsNumber * getPriceOfBook(harryBooksSize, 0.25) + HarryBook.getHarryTotalPrice(subHarryBooks);
+			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.25)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
 		throw new HarryBookException();
 	}
 
