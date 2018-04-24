@@ -27,6 +27,79 @@ public class HarryBook extends Book {
 		HarryBook.harryBookE = new HarryBook("HarryBookE");
 	}
 
+	private HarryBook(String name) {
+		this(name, UNITPRICE);
+	}
+
+	private HarryBook(String name, double price) {
+		this.setName(name);
+		this.setPrice(price);
+	}
+
+	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
+
+		Map<HarryBook, Integer> harryBooksTemp = clearEmptyBooks(harryBooks);
+
+		if (harryBooksTemp.isEmpty())
+			return 0;
+
+		int itemsNumber = getItemsNumber(harryBooksTemp);
+		Map<HarryBook, Integer> subHarryBooks = new HashMap<>();
+		for (Entry<HarryBook, Integer> bookEntry : harryBooksTemp.entrySet())
+			subHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - itemsNumber);
+
+		return getTotalPrice(harryBooksTemp, itemsNumber, subHarryBooks);
+	}
+
+	private static int getItemsNumber(Map<HarryBook, Integer> harryBooksTemp) {
+		List<Integer> values = new ArrayList<>(harryBooksTemp.values());
+		values.sort((Integer a, Integer b) -> {
+			return a.compareTo(b);
+		});
+		return values.get(0);
+	}
+
+	private static Map<HarryBook, Integer> clearEmptyBooks(Map<HarryBook, Integer> harryBooks) {
+		Map<HarryBook, Integer> harryBooksTemp = harryBooks;
+		List<HarryBook> removedList = new ArrayList<>();
+		for (Entry<HarryBook, Integer> bookEntry : harryBooksTemp.entrySet()) {
+			if (bookEntry.getValue().equals(0))
+				removedList.add(bookEntry.getKey());
+		}
+		for (HarryBook harryBook : removedList)
+			harryBooksTemp.remove(harryBook);
+		return harryBooksTemp;
+	}
+
+	private static double getTotalPrice(Map<HarryBook, Integer> harryBooks, int itmsNumber,
+			Map<HarryBook, Integer> subHarryBooks) throws HarryBookException {
+		int harryBooksSize = harryBooks.size();
+		if (harryBooksSize == 1)
+			return itmsNumber * getPriceOfBook(harryBooksSize, 0);
+		if (harryBooksSize == 2)
+			return itmsNumber * getPriceOfBook(harryBooksSize, 0.05) + HarryBook.getHarryTotalPrice(subHarryBooks);
+		if (harryBooksSize == 3)
+			return itmsNumber * getPriceOfBook(harryBooksSize, 0.10) + HarryBook.getHarryTotalPrice(subHarryBooks);
+		if (harryBooksSize == 4)
+			return itmsNumber * getPriceOfBook(harryBooksSize, 0.20) + HarryBook.getHarryTotalPrice(subHarryBooks);
+		if (harryBooksSize == 5)
+			return itmsNumber * getPriceOfBook(harryBooksSize, 0.25) + HarryBook.getHarryTotalPrice(subHarryBooks);
+		throw new HarryBookException();
+	}
+
+	private static double getPriceOfBook(int harryBooksSize, double disCountRate) {
+		return UNITPRICE * harryBooksSize * (1 - disCountRate);
+	}
+
+	public static class HarryBookException extends Exception {
+
+		private static final long serialVersionUID = -2245482009889848599L;
+
+		public HarryBookException() {
+			super("The Illegel Harry Book Name!");
+		}
+	}
+
 	/**
 	 * @return the harryBookA
 	 */
@@ -60,68 +133,6 @@ public class HarryBook extends Book {
 	 */
 	public static HarryBook getHarryBookE() {
 		return harryBookE;
-	}
-
-	private HarryBook(String name) {
-		this(name, UNITPRICE);
-	}
-
-	private HarryBook(String name, double price) {
-		this.setName(name);
-		this.setPrice(price);
-	}
-
-	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
-
-		List<HarryBook> removedList = new ArrayList<>();
-		int itmsNumber = 0;
-		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet()) {
-			if (bookEntry.getValue().equals(0))
-				removedList.add(bookEntry.getKey());
-		}
-		for (HarryBook harryBook : removedList) {
-			harryBooks.remove(harryBook);
-		}
-
-		if (harryBooks.isEmpty())
-			return 0;
-
-		List<Integer> values = new ArrayList<>(harryBooks.values());
-		values.sort((Integer a, Integer b) -> {
-			return a.compareTo(b);
-		});
-		itmsNumber = values.get(0);
-		Map<HarryBook, Integer> subHarryBooks = new HashMap<>();
-		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet()) {
-			subHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - itmsNumber);
-		}
-
-		if (harryBooks.size() == 1)
-			return itmsNumber * UNITPRICE;
-
-		if (harryBooks.size() == 2) {
-			return itmsNumber * UNITPRICE * harryBooks.size() * (1 - 0.05)
-					+ HarryBook.getHarryTotalPrice(subHarryBooks);
-		}
-		if (harryBooks.size() == 3)
-			return itmsNumber * UNITPRICE * harryBooks.size() * (1 - 0.10)
-					+ HarryBook.getHarryTotalPrice(subHarryBooks);
-		if (harryBooks.size() == 4)
-			return itmsNumber * UNITPRICE * harryBooks.size() * (1 - 0.20)
-					+ HarryBook.getHarryTotalPrice(subHarryBooks);
-		if (harryBooks.size() == 5)
-			return itmsNumber * UNITPRICE * harryBooks.size() * (1 - 0.25)
-					+ HarryBook.getHarryTotalPrice(subHarryBooks);
-		throw new HarryBookException();
-	}
-
-	public static class HarryBookException extends Exception {
-
-		private static final long serialVersionUID = -2245482009889848599L;
-
-		public HarryBookException() {
-			super("The Illegel Harry Book Name!");
-		}
 	}
 
 }
