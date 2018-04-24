@@ -67,9 +67,7 @@ public class HarryBook extends Book {
 	private static double getTotalPrice(Map<HarryBook, Integer> harryBooks, int maxItmsNumber)
 			throws HarryBookException {
 
-		Map<HarryBook, Integer> remainingHarryBooks = new HashMap<>();
-		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet())
-			remainingHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - maxItmsNumber);
+		Map<HarryBook, Integer> remainingHarryBooks = getRainingHarryBooks(harryBooks, maxItmsNumber);
 
 		int harryBooksSize = harryBooks.size();
 		if (harryBooksSize == 1)
@@ -87,6 +85,13 @@ public class HarryBook extends Book {
 			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.25)
 					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
 		throw new HarryBookException();
+	}
+
+	private static Map<HarryBook, Integer> getRainingHarryBooks(Map<HarryBook, Integer> harryBooks, int maxItmsNumber) {
+		Map<HarryBook, Integer> remainingHarryBooks = new HashMap<>();
+		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet())
+			remainingHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - maxItmsNumber);
+		return remainingHarryBooks;
 	}
 
 	private static double getPriceOfBook(int harryBooksSize, double disCountRate) {
