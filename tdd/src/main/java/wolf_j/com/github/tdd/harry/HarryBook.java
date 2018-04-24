@@ -12,11 +12,11 @@ import java.util.Map.Entry;
  */
 public class HarryBook extends Book {
 
-	static HarryBook harryBookA;
-	static HarryBook harryBookB;
-	static HarryBook harryBookC;
-	static HarryBook harryBookD;
-	static HarryBook harryBookE;
+	static HarryBook harryBookA = new HarryBook("HarryBookA");
+	static HarryBook harryBookB = new HarryBook("HarryBookB");
+	static HarryBook harryBookC = new HarryBook("HarryBookC");
+	static HarryBook harryBookD = new HarryBook("HarryBookD");
+	static HarryBook harryBookE = new HarryBook("HarryBookE");
 
 	static final double UNITPRICE = 8d;
 
@@ -27,14 +27,6 @@ public class HarryBook extends Book {
 	private HarryBook(String name, double price) {
 		this.setName(name);
 		this.setPrice(price);
-	}
-
-	static {
-		HarryBook.harryBookA = new HarryBook("HarryBookA");
-		HarryBook.harryBookB = new HarryBook("HarryBookB");
-		HarryBook.harryBookC = new HarryBook("HarryBookC");
-		HarryBook.harryBookD = new HarryBook("HarryBookD");
-		HarryBook.harryBookE = new HarryBook("HarryBookE");
 	}
 
 	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
