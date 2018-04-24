@@ -40,20 +40,43 @@ public class HarryBook extends Book {
 		Map<HarryBook, Integer> actualHarryBooks = clearEmptyBooks(harryBooks);
 		if (actualHarryBooks.isEmpty())
 			return 0;
-		int maxItemsNumber = getItemsNumber(actualHarryBooks);
-		return getTotalPrice(actualHarryBooks, maxItemsNumber);
+		return getTotalPrice(actualHarryBooks);
 	}
 
 	private static Map<HarryBook, Integer> clearEmptyBooks(Map<HarryBook, Integer> harryBooks) {
-		Map<HarryBook, Integer> harryBooksTemp = harryBooks;
+		Map<HarryBook, Integer> actualHarryBooks = harryBooks;
 		List<HarryBook> removedList = new ArrayList<>();
-		for (Entry<HarryBook, Integer> bookEntry : harryBooksTemp.entrySet()) {
+		for (Entry<HarryBook, Integer> bookEntry : actualHarryBooks.entrySet()) {
 			if (bookEntry.getValue().equals(0))
 				removedList.add(bookEntry.getKey());
 		}
 		for (HarryBook harryBook : removedList)
-			harryBooksTemp.remove(harryBook);
-		return harryBooksTemp;
+			actualHarryBooks.remove(harryBook);
+		return actualHarryBooks;
+	}
+
+	private static double getTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
+
+		int maxItemsNumber = getItemsNumber(harryBooks);
+
+		Map<HarryBook, Integer> remainingHarryBooks = getRainingHarryBooks(harryBooks, maxItemsNumber);
+
+		int harryBooksSize = harryBooks.size();
+		if (harryBooksSize == 1)
+			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0);
+		if (harryBooksSize == 2)
+			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.05)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
+		if (harryBooksSize == 3)
+			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.10)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
+		if (harryBooksSize == 4)
+			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.20)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
+		if (harryBooksSize == 5)
+			return maxItemsNumber * getPriceOfBook(harryBooksSize, 0.25)
+					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
+		throw new HarryBookException();
 	}
 
 	private static int getItemsNumber(Map<HarryBook, Integer> harryBooksTemp) {
@@ -62,29 +85,6 @@ public class HarryBook extends Book {
 			return a.compareTo(b);
 		});
 		return values.get(0);
-	}
-
-	private static double getTotalPrice(Map<HarryBook, Integer> harryBooks, int maxItmsNumber)
-			throws HarryBookException {
-
-		Map<HarryBook, Integer> remainingHarryBooks = getRainingHarryBooks(harryBooks, maxItmsNumber);
-
-		int harryBooksSize = harryBooks.size();
-		if (harryBooksSize == 1)
-			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0);
-		if (harryBooksSize == 2)
-			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.05)
-					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		if (harryBooksSize == 3)
-			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.10)
-					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		if (harryBooksSize == 4)
-			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.20)
-					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		if (harryBooksSize == 5)
-			return maxItmsNumber * getPriceOfBook(harryBooksSize, 0.25)
-					+ HarryBook.getHarryTotalPrice(remainingHarryBooks);
-		throw new HarryBookException();
 	}
 
 	private static Map<HarryBook, Integer> getRainingHarryBooks(Map<HarryBook, Integer> harryBooks, int maxItmsNumber) {
