@@ -38,17 +38,17 @@ public class HarryBook extends Book {
 
 	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
 
-		Map<HarryBook, Integer> harryBooksTemp = clearEmptyBooks(harryBooks);
+		Map<HarryBook, Integer> actualHarryBooks = clearEmptyBooks(harryBooks);
 
-		if (harryBooksTemp.isEmpty())
+		if (actualHarryBooks.isEmpty())
 			return 0;
 
-		int itemsNumber = getItemsNumber(harryBooksTemp);
+		int itemsNumber = getItemsNumber(actualHarryBooks);
 		Map<HarryBook, Integer> subHarryBooks = new HashMap<>();
-		for (Entry<HarryBook, Integer> bookEntry : harryBooksTemp.entrySet())
+		for (Entry<HarryBook, Integer> bookEntry : actualHarryBooks.entrySet())
 			subHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - itemsNumber);
 
-		return getTotalPrice(harryBooksTemp, itemsNumber, subHarryBooks);
+		return getTotalPrice(actualHarryBooks, itemsNumber, subHarryBooks);
 	}
 
 	private static int getItemsNumber(Map<HarryBook, Integer> harryBooksTemp) {
