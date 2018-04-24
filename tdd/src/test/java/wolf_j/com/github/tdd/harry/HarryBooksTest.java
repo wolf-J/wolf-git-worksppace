@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
+import wolf_j.com.github.tdd.harry.HarryBook.HarryBookException;
+
 /**
  * @author wolf-J
  *
@@ -16,13 +18,13 @@ public class HarryBooksTest {
 	private static final double UNITPRICE = 8d;
 
 	@Test
-	void should_be_0_when_given_no_book() {
+	void should_be_0_when_given_no_book() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		assertEquals(0d, HarryBook.getHarryTotalPrice(harryBooks), 0.01d);
 	}
 
 	@Test
-	void should_be_not_discount_when_given_1_bookA() {
+	void should_be_not_discount_when_given_1_bookA() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 1);
 
@@ -30,7 +32,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_not_discount_when_given_A1_B0() {
+	void should_be_not_discount_when_given_A1_B0() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 1);
 		harryBooks.put(HarryBook.getHarryBookB(), 0);
@@ -39,7 +41,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_not_discount_when_given_1_bookB() {
+	void should_be_not_discount_when_given_1_bookB() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 
 		harryBooks.put(HarryBook.getHarryBookB(), 1);
@@ -48,7 +50,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_not_discount_when_given_2_bookA() {
+	void should_be_not_discount_when_given_2_bookA() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 
 		harryBooks.put(HarryBook.getHarryBookA(), 2);
@@ -57,7 +59,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_discount_when_given_A1_B1() {
+	void should_be_discount_when_given_A1_B1() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 1);
 		harryBooks.put(HarryBook.getHarryBookB(), 1);
@@ -66,7 +68,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_discount_when_given_A1_C1() {
+	void should_be_discount_when_given_A1_C1() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 1);
 		harryBooks.put(HarryBook.getHarryBookC(), 1);
@@ -75,7 +77,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_not_discount_when_given_A1_B1_C1() {
+	void should_be_not_discount_when_given_A1_B1_C1() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 1);
 		harryBooks.put(HarryBook.getHarryBookB(), 1);
@@ -85,7 +87,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_not_discount_when_given_A2_B1() {
+	void should_be_not_discount_when_given_A2_B1() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 2);
 		harryBooks.put(HarryBook.getHarryBookB(), 1);
@@ -94,7 +96,7 @@ public class HarryBooksTest {
 	}
 
 	@Test
-	void should_be_not_discount_when_given_A2_B3_C1_D4_E3() {
+	void should_be_not_discount_when_given_A2_B3_C1_D4_E3() throws HarryBookException {
 		Map<HarryBook, Integer> harryBooks = new HashMap<>();
 		harryBooks.put(HarryBook.getHarryBookA(), 2);
 		harryBooks.put(HarryBook.getHarryBookB(), 3);

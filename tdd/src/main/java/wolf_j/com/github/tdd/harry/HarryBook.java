@@ -62,34 +62,29 @@ public class HarryBook extends Book {
 		return harryBookE;
 	}
 
-	public HarryBook(String name) {
+	private HarryBook(String name) {
 		this(name, UNITPRICE);
 	}
 
-	public HarryBook(String name, double price) {
+	private HarryBook(String name, double price) {
 		this.setName(name);
 		this.setPrice(price);
 	}
 
-	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) {
+	public static double getHarryTotalPrice(Map<HarryBook, Integer> harryBooks) throws HarryBookException {
 
 		List<HarryBook> removedList = new ArrayList<>();
 		int itmsNumber = 0;
 		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet()) {
 			if (bookEntry.getValue().equals(0))
 				removedList.add(bookEntry.getKey());
-			else
-				itmsNumber += bookEntry.getValue();
 		}
 		for (HarryBook harryBook : removedList) {
 			harryBooks.remove(harryBook);
 		}
 
-		if (harryBooks.size() == 0)
+		if (harryBooks.isEmpty())
 			return 0;
-
-		if (harryBooks.size() == 1)
-			return itmsNumber * UNITPRICE;
 
 		List<Integer> values = new ArrayList<>(harryBooks.values());
 		values.sort((Integer a, Integer b) -> {
@@ -100,6 +95,10 @@ public class HarryBook extends Book {
 		for (Entry<HarryBook, Integer> bookEntry : harryBooks.entrySet()) {
 			subHarryBooks.put(bookEntry.getKey(), bookEntry.getValue() - itmsNumber);
 		}
+
+		if (harryBooks.size() == 1)
+			return itmsNumber * UNITPRICE;
+
 		if (harryBooks.size() == 2) {
 			return itmsNumber * UNITPRICE * harryBooks.size() * (1 - 0.05)
 					+ HarryBook.getHarryTotalPrice(subHarryBooks);
@@ -113,7 +112,16 @@ public class HarryBook extends Book {
 		if (harryBooks.size() == 5)
 			return itmsNumber * UNITPRICE * harryBooks.size() * (1 - 0.25)
 					+ HarryBook.getHarryTotalPrice(subHarryBooks);
-		return 0;
+		throw new HarryBookException();
+	}
+
+	public static class HarryBookException extends Exception {
+
+		private static final long serialVersionUID = -2245482009889848599L;
+
+		public HarryBookException() {
+			super("The Illegel Harry Book Name!");
+		}
 	}
 
 }
