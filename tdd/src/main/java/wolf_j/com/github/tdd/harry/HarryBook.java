@@ -12,11 +12,11 @@ import java.util.Map.Entry;
  */
 public class HarryBook extends Book {
 
-	static HarryBook harryBookA = new HarryBook("HarryBookA");
-	static HarryBook harryBookB = new HarryBook("HarryBookB");
-	static HarryBook harryBookC = new HarryBook("HarryBookC");
-	static HarryBook harryBookD = new HarryBook("HarryBookD");
-	static HarryBook harryBookE = new HarryBook("HarryBookE");
+	static final HarryBook harryBookA = new HarryBook("HarryBookA");
+	static final HarryBook harryBookB = new HarryBook("HarryBookB");
+	static final HarryBook harryBookC = new HarryBook("HarryBookC");
+	static final HarryBook harryBookD = new HarryBook("HarryBookD");
+	static final HarryBook harryBookE = new HarryBook("HarryBookE");
 
 	static final double UNITPRICE = 8d;
 
