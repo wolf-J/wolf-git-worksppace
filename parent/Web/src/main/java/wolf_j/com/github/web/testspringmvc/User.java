@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.testspringmvc;
+package wolf_j.com.github.web.testspringmvc;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,8 +11,11 @@ import java.util.Date;
  *
  */
 public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
-    private Integer id; // id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2840226321306827927L;
+	private Integer id; // id
     private String name; // name
     private String pwd; // pwd
     private Integer age; // age

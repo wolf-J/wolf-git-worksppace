@@ -1,4 +1,4 @@
-package wolf_j.com.github.testspringmvc;
+package wolf_j.com.github.web.testspringmvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

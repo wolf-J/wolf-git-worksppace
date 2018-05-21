@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.testspringmvc;
+package wolf_j.com.github.web.testspringmvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
