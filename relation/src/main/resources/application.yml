@@ -4,9 +4,19 @@ server:
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;DatabaseName=DBCOAST;integratedSecurity=false;sendStringParametersAsUnicode=false
+    url: jdbc:sqlserver://localhost:1433;DatabaseName=Relation;integratedSecurity=false;sendStringParametersAsUnicode=false
     username: sa
     password: Password@123
+    tomcat:
+      max-active: 10
+      max-wait: 5000
+      test-on-borrow: true
+    
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
     
   security:
     user:

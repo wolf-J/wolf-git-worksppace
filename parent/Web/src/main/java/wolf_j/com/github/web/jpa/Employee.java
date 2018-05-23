@@ -20,10 +20,10 @@ public class Employee implements Serializable {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "firstname")
+	@Column(name = "firstname", nullable = false)
 	private String firstName;
 
-	@Column(name = "lastname")
+	@Column(name = "lastname", nullable = false)
 	private String lastName;
 
 	@Column(name = "salary")
