@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import wolf_j.com.github.relation.classmessage.presistence.User;
+import wolf_j.com.github.relation.classmessage.presistence.UserEntity;
 import wolf_j.com.github.relation.classmessage.presistence.UserRepository;
 
 /**
@@ -25,7 +25,7 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByUserName(username);
+        UserEntity user = userRepository.findByUserName(username);
 
         if( user == null ){
             throw new UsernameNotFoundException(String.format("User with username=%s was not found", username));

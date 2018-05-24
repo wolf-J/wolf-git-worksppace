@@ -3,9 +3,8 @@
  */
 package wolf_j.com.github.relation.classmessage.presistence;
 
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,10 +13,10 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends PagingAndSortingRepository<UserEntity, Long> {
 
 	@Query(value = "SELECT * FROM Users users WHERE users.username = :username", nativeQuery =true)
-	public User findByUserName(@Param("username") String username);
+	public UserEntity findByUserName(@Param("username") String username);
 	
 	
 /*	@Modifying

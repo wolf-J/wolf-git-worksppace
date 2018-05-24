@@ -5,7 +5,7 @@
         <title>welcome to Relation!</title>
     </head>
     <body>
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]], Welcome to Relation! It is my pleasure to be of service to you!</h1>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="注 销"/>
         </form>

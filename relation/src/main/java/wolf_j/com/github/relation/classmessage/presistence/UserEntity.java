@@ -25,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable, UserDetails {
+public class UserEntity implements Serializable, UserDetails {
 
 	/**
 	 * 
@@ -45,10 +45,10 @@ public class User implements Serializable, UserDetails {
 	@Column(name = "role")
 	private String role;
 
-	public User() {
+	public UserEntity() {
 	}
 
-	public User(String username, String password, String role) {
+	public UserEntity(String username, String password, String role) {
 
 		this.setUsername(username);
 		this.setPassword(password);
@@ -112,9 +112,10 @@ public class User implements Serializable, UserDetails {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	public boolean isSameUserProperties(User user) {
-		if(user.id == this.id && user.username.equals(this.username) && user.password.equals(this.password) && user.role.equals(this.role))
+
+	public boolean isSameUserProperties(UserEntity user) {
+		if (user.id == this.id && user.username.equals(this.username) && user.password.equals(this.password)
+				&& user.role.equals(this.role))
 			return true;
 		return false;
 	}
