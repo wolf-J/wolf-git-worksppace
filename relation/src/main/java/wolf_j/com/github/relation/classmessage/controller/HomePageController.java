@@ -54,7 +54,7 @@ public class HomePageController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 
 	String postRegisterUser(Model model, @ModelAttribute("userVOFromFrontEnd") UserVOFromFrontEnd userVOFromFrontEnd) {
-		// register.registOrdinaryUser(user);
+		// register.registOrdinaryUser(userVOFromFrontEnd);
 		String password = new BCryptPasswordEncoder().encode(userVOFromFrontEnd.getPassword());
 		UserEntity user = new UserEntity(userVOFromFrontEnd.getUsername(), password, "ROLE_user");
 		UserMessageEntity userMessage = new UserMessageEntity(userVOFromFrontEnd);

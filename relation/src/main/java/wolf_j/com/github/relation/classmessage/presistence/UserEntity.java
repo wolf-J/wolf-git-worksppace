@@ -33,13 +33,13 @@ public class UserEntity implements Serializable, UserDetails {
 	private static final long serialVersionUID = 5113359539035265304L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(unique = true, name = "id")
 	private long id;
 
-	@Column(name = "username")
+	@Column(name = "username", nullable = false, unique = true, length = 20)
 	private String username;
 
-	@Column(name = "password")
+	@Column(name = "password", nullable = false, length = 100)
 	private String password;
 
 	@Column(name = "role")

@@ -30,23 +30,32 @@ public class UserMessageEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	@Column(unique = true, name = "id")
 	private long id;
 
-	@Column(name = "username")
+	@Column(name = "username", nullable = false, unique = true, length = 20)
 	private String username;
 
-	@Column(name = "fullName")
+	@Column(name = "fullName", length = 20)
 	private String fullName;
 
-	@Column(name = "phoneNumber")
+	@Column(name = "phoneNumber", length = 20)
 	private String phoneNumber;
 
-	@Column(name = "sex")
+	@Column(name = "sex", length = 5)
 	private String sex;
 
-	@Column(name = "birthDay")
+	@Column(name = "birthDay", length = 20)
 	private String birthDay;
+
+	@Column(name = "address", length = 50)
+	private String address;
+
+	@Column(name = "organization", length = 50)
+	private String organization;
+
+	@Column(name = "whatUp", length = 50)
+	private String whatUp;
 
 	public UserMessageEntity() {
 	}
@@ -63,7 +72,7 @@ public class UserMessageEntity implements Serializable {
 		this.organization = organization;
 		this.whatUp = whatUp;
 	}
-	
+
 	public UserMessageEntity(UserVOFromFrontEnd userVOFromFrontEnd) {
 		super();
 		this.username = userVOFromFrontEnd.getUsername();
@@ -147,14 +156,5 @@ public class UserMessageEntity implements Serializable {
 	public void setWhatUp(String whatUp) {
 		this.whatUp = whatUp;
 	}
-
-	@Column(name = "address")
-	private String address;
-
-	@Column(name = "organization")
-	private String organization;
-
-	@Column(name = "whatUp")
-	private String whatUp;
 
 }
