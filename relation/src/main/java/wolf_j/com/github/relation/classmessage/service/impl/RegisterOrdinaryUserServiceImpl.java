@@ -13,7 +13,6 @@ import wolf_j.com.github.relation.classmessage.domain.UserFromFrontEnd;
 import wolf_j.com.github.relation.classmessage.presistence.UserEntity;
 import wolf_j.com.github.relation.classmessage.presistence.UserMessageEntity;
 import wolf_j.com.github.relation.classmessage.presistence.UserMessageRepository;
-import wolf_j.com.github.relation.classmessage.presistence.UserOperation;
 import wolf_j.com.github.relation.classmessage.presistence.UserRepository;
 import wolf_j.com.github.relation.classmessage.service.RegisterService;
 
