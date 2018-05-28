@@ -11,8 +11,9 @@
 		<h4>Sign Up Success!</h4>
 		<p>
 		<h5>details：</h5>
-		UserName：${classMember.name}<br /> PassWord：${classMember.password}<br /> PhoneNumber：${classMember.phoneNumber}<br />
-		UserID：${classMember.id}<br /> creatTime：${classMember.creatTime}<br />
+		UserName：${classMember.name}<br /> PassWord：${classMember.password}<br />
+		PhoneNumber：${classMember.phoneNumber}<br /> UserID：${classMember.id}<br />
+		creatTime：${classMember.creatTime}<br />
 		</p>
 	</div>
 </body>

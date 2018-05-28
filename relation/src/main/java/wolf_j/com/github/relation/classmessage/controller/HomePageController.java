@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import wolf_j.com.github.relation.classmessage.domain.UserFromFrontEnd;
 import wolf_j.com.github.relation.classmessage.presistence.UserEntity;
 import wolf_j.com.github.relation.classmessage.presistence.UserMessageEntity;
-import wolf_j.com.github.relation.classmessage.service.UserVOFromFrontEnd;
 
 /**
  * @author wolf-J
@@ -42,23 +42,8 @@ public class HomePageController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	String login(Model model, @ModelAttribute("user") UserVOFromFrontEnd user) {
+	String login(Model model, @ModelAttribute("user") UserFromFrontEnd user) {
 		return "login";
 	}
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	String getRegisterPage(Model model, @ModelAttribute("userVOFromFrontEnd") UserVOFromFrontEnd userVOFromFrontEnd) {
-		return "register";
-	}
-
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-
-	String postRegisterUser(Model model, @ModelAttribute("userVOFromFrontEnd") UserVOFromFrontEnd userVOFromFrontEnd) {
-		// register.registOrdinaryUser(userVOFromFrontEnd);
-		String password = new BCryptPasswordEncoder().encode(userVOFromFrontEnd.getPassword());
-		UserEntity user = new UserEntity(userVOFromFrontEnd.getUsername(), password, "ROLE_user");
-		UserMessageEntity userMessage = new UserMessageEntity(userVOFromFrontEnd);
-		
-		return "redirect:/register?error";
-	}
 }

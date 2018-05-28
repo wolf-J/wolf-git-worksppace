@@ -27,22 +27,7 @@ public class TestUserRepository {
 	UserRepository userRepositoryTest;
 
 	@Test
-	public void TestuserRepositoryNotNullWhenDBHaveUser() {
-		UserEntity user = userRepositoryTest.findByUserName("wolf");
-
-		assertNotNull(user);
-	}
-
-	@Test
-	public void TestuserRepositorySuccessWhenDBHaveUser() {
-		UserEntity user = userRepositoryTest.findByUserName("wolf");
-		Optional<UserEntity> user1 = userRepositoryTest.findById(1L);
-
-		assertEquals(true, user1.get().isSameUserProperties(user));
-	}
-
-	@Test
-	public void TestuserRepositoryInsertedUserWhenGivenUser() {
+	public void testUserRepositoryInsertedUserWhenGivenUser() {
 		UserEntity userFromDB = userRepositoryTest.findByUserName("wolf-J");
 		if (userFromDB == null) {
 			UserEntity user = new UserEntity("wolf-J", new BCryptPasswordEncoder().encode("1234"), "ROLE_user");

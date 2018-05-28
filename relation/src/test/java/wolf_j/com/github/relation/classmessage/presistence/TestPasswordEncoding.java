@@ -5,6 +5,8 @@ package wolf_j.com.github.relation.classmessage.presistence;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -16,6 +18,7 @@ public class TestPasswordEncoding {
 
 	@Test
 	public void testPasswordEncoding() {
+		
 		assertTrue(new BCryptPasswordEncoder().matches("1111","$2a$10$Tj4vMkLISQpwjv0EoToG.OsYxGS945b2U4Kn0Bh4qg3axyFMYfiQG"));
 	}
 

@@ -1,17 +1,18 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.service;
+package wolf_j.com.github.relation.classmessage.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import wolf_j.com.github.relation.classmessage.presistence.UserMessageEntity;
 
 /**
  * @author wolf-J
  *
  */
 
-public class UserVOFromFrontEnd implements Serializable {
+public class UserFromFrontEnd implements Serializable {
 
 	private static final long serialVersionUID = -304027077679282838L;
 	private String username;
@@ -95,6 +96,19 @@ public class UserVOFromFrontEnd implements Serializable {
 
 	public void setWhatUp(String whatUp) {
 		this.whatUp = whatUp;
+	}
+
+	public UserMessageEntity toUserMessageEntity() {
+		UserMessageEntity userMessageEntity = new UserMessageEntity();
+		userMessageEntity.setUsername(this.username);
+		userMessageEntity.setFullName(this.fullName);
+		userMessageEntity.setPhoneNumber(this.phoneNumber);
+		userMessageEntity.setSex(this.getSex());
+		userMessageEntity.setBirthDay(this.getBirthDay());
+		userMessageEntity.setAddress(this.getAddress());
+		userMessageEntity.setOrganization(this.getOrganization());
+		userMessageEntity.setWhatUp(this.getWhatUp());
+		return userMessageEntity;
 	}
 
 }

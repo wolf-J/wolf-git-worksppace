@@ -11,8 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import wolf_j.com.github.relation.classmessage.service.UserVOFromFrontEnd;
+import javax.persistence.TableGenerator;
 
 /**
  * @author wolf-J
@@ -29,7 +28,8 @@ public class UserMessageEntity implements Serializable {
 	private static final long serialVersionUID = 3052332122030341362L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy =  GenerationType.TABLE, generator = "UsersMessage_sequence")
+	@TableGenerator(name = "UsersMessage_sequence", allocationSize = 1,table = "SeqTable")
 	@Column(unique = true, name = "id")
 	private long id;
 
@@ -73,17 +73,6 @@ public class UserMessageEntity implements Serializable {
 		this.whatUp = whatUp;
 	}
 
-	public UserMessageEntity(UserVOFromFrontEnd userVOFromFrontEnd) {
-		super();
-		this.username = userVOFromFrontEnd.getUsername();
-		this.fullName = userVOFromFrontEnd.getFullName();
-		this.phoneNumber = userVOFromFrontEnd.getPhoneNumber();
-		this.sex = userVOFromFrontEnd.getSex();
-		this.birthDay = userVOFromFrontEnd.getBirthDay();
-		this.address = userVOFromFrontEnd.getAddress();
-		this.organization = userVOFromFrontEnd.getOrganization();
-		this.whatUp = userVOFromFrontEnd.getWhatUp();
-	}
 
 	public long getId() {
 		return id;

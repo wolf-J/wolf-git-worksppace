@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import wolf_j.com.github.relation.classmessage.service.UserVOFromFrontEnd;
+import wolf_j.com.github.relation.classmessage.domain.UserFromFrontEnd;
 
 /**
  * @author wolf-J
@@ -28,7 +28,7 @@ public class SignUpController {
     
     
     @RequestMapping(value = "/check")
-    public String checkAndStorege(@ModelAttribute("user") UserVOFromFrontEnd userVO,  Model model) {
+    public String checkAndStorege(@ModelAttribute("user") UserFromFrontEnd userVO,  Model model) {
     	model.addAttribute("user", userVO);
         return "signUpSuccess";
     }

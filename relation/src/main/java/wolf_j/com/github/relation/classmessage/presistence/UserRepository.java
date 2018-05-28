@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends PagingAndSortingRepository<UserEntity, Long> {
 
-	@Query(value = "SELECT * FROM Users users WHERE users.username = :username", nativeQuery =true)
+	@Query(value = "SELECT user FROM UserEntity user WHERE user.username = :username")
 	public UserEntity findByUserName(@Param("username") String username);
 	
 	

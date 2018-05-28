@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,7 +33,8 @@ public class UserEntity implements Serializable, UserDetails {
 	 */
 	private static final long serialVersionUID = 5113359539035265304L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy =  GenerationType.TABLE, generator = "User_sequence")
+	@TableGenerator(name = "User_sequence", allocationSize = 1,table = "SeqTable")
 	@Column(unique = true, name = "id")
 	private long id;
 

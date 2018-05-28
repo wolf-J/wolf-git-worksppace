@@ -1,11 +1,6 @@
 server: 
   port: 8083
 
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-
 spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -22,6 +17,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
+    generate-ddl: true
     
   security:
     user:
