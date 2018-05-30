@@ -24,7 +24,6 @@ public class TestPasswordEncoding {
 
 	@Test
 	public void testBCryptPasswordEncoder() {
-
 		assertTrue(new BCryptPasswordEncoder().matches("1111", new BCryptPasswordEncoder().encode("1111")));
 	}
 

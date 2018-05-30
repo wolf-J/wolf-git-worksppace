@@ -38,10 +38,11 @@ public class RegisterController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	String postRegisterUser(Model model, @ModelAttribute("userVOFromFrontEnd") UserFromFrontEnd userVOFromFrontEnd) {
-
 		if (registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd))
-			return "redirect:/register?success";
-		return "redirect:/register?error";
+			model.addAttribute("success", true);
+		else
+			model.addAttribute("fail", true);
+		return "register";
 	}
 
 }

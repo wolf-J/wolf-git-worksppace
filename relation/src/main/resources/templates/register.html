@@ -42,8 +42,8 @@
 					<label>&nbsp;Phone Number:： </label> <input type="tel"
 						class="form-control" placeholder="Phone Number" />
 				</p>
-				<p th:if="${param.success}" class="error-code">注册成功</p>
-				<p th:if="${param.error}" class="error-code">用户名已被注册</p>
+				<p th:if="${success}" class="error-code">注册成功</p>
+				<p th:if="${fail}" class="error-code">用户名已被注册</p>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 			</fieldset>
 		</form>
