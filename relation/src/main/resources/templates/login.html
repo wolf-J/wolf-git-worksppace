@@ -11,11 +11,11 @@
 
 <body>
 <script type="text/javascript" ></script>
-	<h3 align="center">主页</h3>
+	<h2 align="center">主页</h2>
 	<div class="container">
 		<form class="form-signin" th:action="@{/login}" th:object="${user}"
 			method="post">
-			<h2 class="form-signin-heading" align="center">请 登 录</h2>
+			<h3 class="form-signin-heading" align="center">请 登 录</h3>
 			<input type="text" class="form-control" placeholder="账号" th:field="*{username}" /> 
 			<input type="password" class="form-control" placeholder="密码" th:field="*{password}" />
 			<p th:if="${param.logout}" class="error-code">已成功注销</p>
