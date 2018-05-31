@@ -9,7 +9,7 @@ function checkForm(){
   function checkUserName(){ 
   var username = document.getElementById('userName'); 
   var errname = document.getElementById('nameErr'); 
-  var pattern = /^\w{6,}$/;  //用户名格式正则表达式：用户名要至少六位 
+  var pattern = /^\w{6,20}$/;  //用户名格式正则表达式：用户名要在6-20位 
   if(username.value.length == 0){ 
     errname.innerHTML="用户名不能为空"
     errname.className="error"

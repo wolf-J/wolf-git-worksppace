@@ -1,14 +1,14 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.controller;
+package wolf_j.com.github.relation.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import wolf_j.com.github.relation.classmessage.domain.UserFromFrontEnd;
+import wolf_j.com.github.relation.service.bean.UserFromFrontEnd;
 
 /**
  * @author wolf-J

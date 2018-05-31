@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.controller;
+package wolf_j.com.github.relation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import wolf_j.com.github.relation.classmessage.domain.UserFromFrontEnd;
-import wolf_j.com.github.relation.classmessage.service.RegisterService;
+import wolf_j.com.github.relation.service.RegisterService;
+import wolf_j.com.github.relation.service.bean.RegisterMessage;
+import wolf_j.com.github.relation.service.bean.UserFromFrontEnd;
 
 /**
  * @author wolf-J
@@ -33,15 +34,14 @@ public class RegisterController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	String getRegisterPage(Model model, @ModelAttribute("userVOFromFrontEnd") UserFromFrontEnd userVOFromFrontEnd) {
+		model.addAttribute("registerMessage", new RegisterMessage());
 		return "register";
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	String postRegisterUser(Model model, @ModelAttribute("userVOFromFrontEnd") UserFromFrontEnd userVOFromFrontEnd) {
-		if (registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd))
-			model.addAttribute("success", true);
-		else
-			model.addAttribute("fail", true);
+		RegisterMessage registerMessage = registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd);
+		model.addAttribute("registerMessage", registerMessage);
 		return "register";
 	}
 

@@ -21,7 +21,7 @@
 	<h3>
 		<input name="homepage" type="button" id="homepage" value="HOMEPAGE">
 	</h3>
-	<h3 align="center">注册</h3>
+	<h3 align="center">用户注册</h3>
 	<div class="container">
 		<form class="form-signin" th:action="@{/register}"
 			th:object="${userVOFromFrontEnd}" method="post">
@@ -35,15 +35,29 @@
 						th:field="*{password}" />
 				</p>
 				<p>
+					<label>&nbsp;姓名: </label> <input type="text" class="form-control"
+						placeholder="姓名" th:field="*{fullName}" />
+				</p>
+				<p>
+					<label>&nbsp;电话号码: </label> <input type="tel" class="form-control"
+						placeholder="电话号码" th:field="*{phoneNumber}" />
+				</p>
+				<p>
+					<label>&nbsp;性别: </label>
+				<div class = "form-control">
+					<input type="radio" name="sex" value="M" th:field="*{sex}">男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+						type="radio" name="sex" value="F" th:field="*{sex}">女
+				</div>
+				</p>
+				<p>
 					<label>&nbsp;生日： </label> <input type="date" value="2000-06-01"
 						class="form-control" placeholder="生日" th:field="*{birthDay}" />
 				</p>
-				<p>
-					<label>&nbsp;Phone Number:： </label> <input type="tel"
-						class="form-control" placeholder="Phone Number" />
-				</p>
-				<p th:if="${success}" class="error-code">注册成功</p>
-				<p th:if="${fail}" class="error-code">用户名已被注册</p>
+
+				<p th:if="${registerMessage.success}" class="error-code">注册成功</p>
+				<p th:if="${registerMessage.fail}" class="error-code">用户名已被注册</p>
+				<p th:if="${registerMessage.error}" class="error-code">输入信息有误</p>
+				<button class="btn btn-lg btn-primary btn-block" type="reset">重新输入</button>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 			</fieldset>
 		</form>

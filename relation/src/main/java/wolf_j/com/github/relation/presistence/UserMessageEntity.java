@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.presistence;
+package wolf_j.com.github.relation.presistence;
 
 import java.io.Serializable;
 

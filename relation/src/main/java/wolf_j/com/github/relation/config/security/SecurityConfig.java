@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.service;
+package wolf_j.com.github.relation.config.security;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -17,8 +17,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import wolf_j.com.github.relation.classmessage.domain.UserFromFrontEnd;
-import wolf_j.com.github.relation.classmessage.service.RegisterService;
+import wolf_j.com.github.relation.controller.HomePageController;
+import wolf_j.com.github.relation.controller.RegisterController;
+import wolf_j.com.github.relation.service.RegisterService;
+import wolf_j.com.github.relation.service.bean.RegisterMessage;
+import wolf_j.com.github.relation.service.bean.UserFromFrontEnd;
 
 /**
  * @author wolf-J
@@ -45,7 +48,7 @@ public class TestHomePageController {
 	@Test
 	public void testRegisterControllerReturnSuccessWhenCallRegister() throws Exception {
 		UserFromFrontEnd userVOFromFrontEnd = null;
-		given(this.registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd)).willReturn(true);
+		given(this.registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd)).willReturn(new RegisterMessage());
 
 		this.mvc.perform(get("/register").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
 				.andExpect(content().encoding("UTF-8"));

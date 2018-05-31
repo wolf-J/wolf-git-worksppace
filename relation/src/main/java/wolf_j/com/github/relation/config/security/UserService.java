@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.service;
+package wolf_j.com.github.relation.config.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import wolf_j.com.github.relation.classmessage.presistence.UserEntity;
-import wolf_j.com.github.relation.classmessage.presistence.UserRepository;
+import wolf_j.com.github.relation.presistence.UserEntity;
+import wolf_j.com.github.relation.presistence.UserRepository;
 
 /**
  * @author wolf-J

@@ -14,6 +14,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import wolf_j.com.github.relation.presistence.UserMessageEntity;
+import wolf_j.com.github.relation.presistence.UserMessageRepository;
+
 /**
  * @author ASNPHM6
  *

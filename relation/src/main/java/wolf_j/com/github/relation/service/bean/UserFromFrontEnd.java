@@ -1,11 +1,11 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.domain;
+package wolf_j.com.github.relation.service.bean;
 
 import java.io.Serializable;
 
-import wolf_j.com.github.relation.classmessage.presistence.UserMessageEntity;
+import wolf_j.com.github.relation.presistence.UserMessageEntity;
 
 /**
  * @author wolf-J
@@ -80,7 +80,6 @@ public class UserFromFrontEnd implements Serializable {
 	public void setOrganization(String organization) {
 		this.organization = organization;
 	}
-
 
 	public String getPassword() {
 		return password;
