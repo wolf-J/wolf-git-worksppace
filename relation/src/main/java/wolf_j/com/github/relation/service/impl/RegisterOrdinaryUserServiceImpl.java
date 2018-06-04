@@ -46,7 +46,7 @@ public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 		String password = new BCryptPasswordEncoder().encode(userFromFrontEnd.getPassword());
 		UserEntity user = new UserEntity(userFromFrontEnd.getUsername(), password, ROLE);
 		UserMessageEntity userMessage = userFromFrontEnd.toUserMessageEntity();
-		if (isExiestsAboutUser(user))
+		if (isExiestsUser(user))
 			registerMessage.setFail(true);
 		else {
 			saveUserAndInfo(user, userMessage);
@@ -61,7 +61,7 @@ public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 				&& userFromFrontEnd.getPassword().length() >= MIN_PASSWORD_LENGTH
 				&& userFromFrontEnd.getPassword().length() <= MAX_PASSWORD_LENGTH;
 	}
-	private boolean isExiestsAboutUser(UserEntity user) {
+	private boolean isExiestsUser(UserEntity user) {
 		return userRepository.findByUserName(user.getUsername()) == null ? false : true;
 	}
 

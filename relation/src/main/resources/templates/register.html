@@ -18,11 +18,11 @@
 </head>
 
 <body>
-	<h3>
-		<input name="homepage" type="button" id="homepage" value="HOMEPAGE">
-	</h3>
-	<h3 align="center">用户注册</h3>
 	<div class="container">
+		<h3>
+			<input name="homepage" type="button" id="homepage" value="HOMEPAGE">
+		</h3>
+		<div class="form-signin btn btn-lg btn-primary btn-block">用户注册</div>
 		<form class="form-signin" th:action="@{/register}"
 			th:object="${userVOFromFrontEnd}" method="post">
 			<fieldset>
@@ -43,9 +43,8 @@
 						placeholder="电话号码" th:field="*{phoneNumber}" />
 				</p>
 				<p>
-					<label>&nbsp;性别: </label>
-				<div class = "form-control">
-					<input type="radio" name="sex" value="M" th:field="*{sex}">男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+					<label>&nbsp;性别: </label> <div class="form-control"><input type="radio" name="sex" value="M"
+						th:field="*{sex}">男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
 						type="radio" name="sex" value="F" th:field="*{sex}">女
 				</div>
 				</p>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.relation.classmessage.controller;
+package wolf_j.com.github.relation.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;

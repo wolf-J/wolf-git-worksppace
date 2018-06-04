@@ -146,4 +146,5 @@ public class UserMessageEntity implements Serializable {
 		this.whatUp = whatUp;
 	}
 
+
 }
