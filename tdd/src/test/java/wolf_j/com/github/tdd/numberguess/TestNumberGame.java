@@ -74,7 +74,7 @@ class TestNumberGame {
 	}
 
 	@Test
-	void should_4remainTries_when_given_and_5_remaintries() throws Exception {
+	void should_4remainTries_when_given_5_remaintries_and_geussOneTime() throws Exception {
 
 		ArrayList<Integer> realNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
 		NumberGame numberGame = new NumberGame(realNumbers, 5);
