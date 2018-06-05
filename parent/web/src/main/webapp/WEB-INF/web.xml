@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>Archetype Created Web Application</display-name>
+
+	<!-- spring mvc listener -->
+<!-- 	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> -->
+
+	<!-- spring mvc DispatcherServlet -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/springmvc_context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- spring mvc servlet-mapping -->
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 需要访问的资源不存在 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404</location>
+	</error-page>
+	<!-- 出现异常 -->
+	<error-page>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<location>/webExceptionPage</location>
+	</error-page>
+	<!-- 服务器内部错误 -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500</location>
+	</error-page>
+
+</web-app>
