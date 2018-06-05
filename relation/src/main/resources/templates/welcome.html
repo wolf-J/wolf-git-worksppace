@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <title>welcome to Relation!</title>
 
 <link
@@ -27,7 +27,7 @@
 		</button>
 		<button name="showRelationList" id="showRelationList"
 			class="btn btn-link"><h2>RelationList</h2></button>
-		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]],
+		<h1 th:inline="text">Hello [[${#request.remoteUser}]],
 			Welcome to Relation! It is my pleasure to be of service to you!</h1>
 		<form class="form-signin" th:action="@{/logout}" method="post">
 			<button class="btn btn-lg btn-primary btn-block" type="submit"

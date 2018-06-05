@@ -1,5 +1,7 @@
 server: 
   port: 8083
+  tomcat:
+    uri-encoding: UTF-8
 
 spring:
   datasource:
@@ -11,6 +13,14 @@ spring:
       max-active: 10
       max-wait: 5000
       test-on-borrow: true
+      
+  http:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+      force-request: true
+      force-response: true
     
   jpa:
     hibernate:
@@ -27,4 +37,10 @@ spring:
   thymeleaf:
     cache: false
     mode: HTML5
+    encoding: UTF-8
+    
+  banner:
+    charset: UTF-8
+
+    
     
