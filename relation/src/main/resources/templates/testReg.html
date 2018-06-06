@@ -6,8 +6,8 @@
 <title>Register</title>
 
 <link rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
-<link rel="stylesheet" th:href="@{css/homepage.css}" />
-<script type="text/javascript" src="js/registerValidator.js"></script>
+<link rel="stylesheet" th:href="@{css/testReg.css}" />
+<script type="text/javascript" src="js/registerValidatorTest.js"></script>
 
 </head>
 <body>
@@ -21,11 +21,11 @@
 			   
 			<hr width="95%" color="#f2f2f2" />
 			   
-			<form action="#" onSubmit="return checkForm()">
+			<form action="#" method="post">
 				    
 				<div id="form-itemGroup">
 					      <label for="userName">用户名：</label>       <input type="text"
-						id="userName" class="userName" onBlur="checkUserName()"
+						id="userName" name="userName" class="userName" onBlur="checkUserName()"
 						oninput="checkUserName()">       <span class="default"
 						id="nameErr">请输入6-20位的用户名</span>     
 				</div>

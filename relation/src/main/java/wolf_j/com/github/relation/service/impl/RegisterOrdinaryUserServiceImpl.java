@@ -25,16 +25,12 @@ import wolf_j.com.github.relation.service.bean.UserFromFrontEnd;
 @Service("registerOrdinaryUserServiceImpl")
 public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 
-	private static final int MAX_USERNAME_LENGTH = 20;
-	private static final int MIN_USERNAME_LENGTH = 6;
-	private static final int MAX_PASSWORD_LENGTH = 20;
-	private static final int MIN_PASSWORD_LENGTH = 6;
-	private static final String ROLE = "ROLE_user";
+	private static final String ROLE = "ROLE_USER";
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
 	UserMessageRepository userMessageRepository;
-	
+
 	@Override
 	@Transactional
 	public RegisterMessage signUpUser(UserFromFrontEnd userFromFrontEnd) {
@@ -56,11 +52,10 @@ public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 	}
 
 	private boolean validateUserMessage(UserFromFrontEnd userFromFrontEnd) {
-		return userFromFrontEnd.getUsername().length() >= MIN_USERNAME_LENGTH
-				&& userFromFrontEnd.getUsername().length() <= MAX_USERNAME_LENGTH
-				&& userFromFrontEnd.getPassword().length() >= MIN_PASSWORD_LENGTH
-				&& userFromFrontEnd.getPassword().length() <= MAX_PASSWORD_LENGTH;
+		return userFromFrontEnd.getUsername().matches("\\w{6,20}")
+				&& userFromFrontEnd.getPassword().matches("\\w{6,20}");
 	}
+
 	private boolean isExiestsUser(UserEntity user) {
 		return userRepository.findByUserName(user.getUsername()) == null ? false : true;
 	}
@@ -69,6 +64,5 @@ public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 		userRepository.save(user);
 		userMessageRepository.save(userMessage);
 	}
-
 
 }

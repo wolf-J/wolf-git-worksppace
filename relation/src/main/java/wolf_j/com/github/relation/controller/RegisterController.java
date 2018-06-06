@@ -42,6 +42,8 @@ public class RegisterController {
 	String postRegisterUser(Model model, @ModelAttribute("userVOFromFrontEnd") UserFromFrontEnd userVOFromFrontEnd) {
 		RegisterMessage registerMessage = registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd);
 		model.addAttribute("registerMessage", registerMessage);
+		//model.addAttribute("registerMessage", new RegisterMessage());
+		System.err.println("userVOFromFrontEnd : " + userVOFromFrontEnd.getFullName());
 		return "register";
 	}
 

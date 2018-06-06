@@ -18,7 +18,7 @@ import wolf_j.com.github.relation.presistence.UserMessageEntity;
 import wolf_j.com.github.relation.presistence.UserMessageRepository;
 
 /**
- * @author ASNPHM6
+ * @author wolf-J
  *
  */
 
@@ -35,12 +35,13 @@ public class TestUserMessageRepository {
 	@Test
 	public void testUserMessageRepositoryInsertedUserNessageSucess() {
 		
-		UserMessageEntity userMessageEntity = new UserMessageEntity("wolf", null, null, null, null, null, null, null);
+		UserMessageEntity userMessageEntity = new UserMessageEntity("wolf", "黄", null, null, null, null, null, null);
 		userMessageRepositoryTest.save(userMessageEntity);
 		
 		UserMessageEntity actualuserMessageEntity = userMessageRepositoryTest.findById(1L).get();
 		
 		assertEquals(userMessageEntity, actualuserMessageEntity);
+		assertEquals("黄", actualuserMessageEntity.getFullName());
 	}
 
 }

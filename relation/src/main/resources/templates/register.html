@@ -6,15 +6,30 @@
 <title>Register</title>
 
 <link rel="stylesheet" th:href="@{css/customer/login.css}" />
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet">
+<link rel="stylesheet" th:href="@{css/customer/register.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/registerValidator.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#homepage").click(function() {
 			$(location).attr('href', '/welcome');
-		})
+		});
+
+		$('#submit').click(function() {
+			var nametip = checkUserName();
+			var passtip = checkPassword();
+			var conpasstip = ConfirmPassword();
+			var phonetip = checkPhone();
+			if (nametip && passtip && conpasstip && phonetip) {
+				$('form').submit();
+			} else {
+				return false;
+			}
+		});
 	})
 </script>
 </head>
@@ -27,23 +42,34 @@
 
 		<div class="btn btn-lg btn-block">用户注册</div>
 		<form class="form-signin" th:action="@{/register}"
-			th:object="${userVOFromFrontEnd}" method="post">
+			th:object="${userVOFromFrontEnd}" method="post"
+			onsubmit="return checkForm()">
 			<fieldset>
 				<p>
-					<input type="text" class="form-control" placeholder="账号"
-						th:field="*{username}" />
+					<input type="text" id="username" class="form-control"
+						placeholder="账号" th:field="*{username}" onBlur="checkUserName()"
+						oninput="checkUserName()">       <span class="default"
+						id="nameErr">请输入6-20位的用户名</span>
 				</p>
 				<p>
-					<input type="password" class="form-control" placeholder="密码"
-						th:field="*{password}" />
+					<input type="password" id="password" class="form-control"
+						placeholder="密码" th:field="*{password}" onBlur="checkPassword()"
+						oninput="checkPassword()">       <span class="default"
+						id="passwordErr">请输入6-20位的密码</span>     
 				</p>
 				<p>
-					<label>&nbsp;姓名: </label> <input type="text" class="form-control"
-						placeholder="姓名" th:field="*{fullName}" />
+					<input type="password" id="userConfirmPasword" class="form-control"
+						placeholder="确认密码" onBlur="checkPassword()"
+						oninput="checkPassword()">       <span class="default"
+						id="passwordErr">请输入6-20位的密码</span>     
 				</p>
 				<p>
-					<label>&nbsp;电话号码: </label> <input type="tel" class="form-control"
-						placeholder="电话号码" th:field="*{phoneNumber}" />
+					<label>&nbsp;姓名: </label> <input type="text" id="fullName"
+						class="form-control" placeholder="姓名" th:field="*{fullName}" />
+				</p>
+				<p>
+					<label>&nbsp;电话号码: </label> <input type="tel" id="phoneNumber"
+						class="form-control" placeholder="电话号码" th:field="*{phoneNumber}" />
 				</p>
 				<p>
 					<label>&nbsp;性别: </label>
@@ -53,15 +79,17 @@
 						value="F" th:field="*{sex}">女
 				</div>
 				<p>
-					<label>&nbsp;生日： </label> <input type="date" value="2000-06-01"
-						class="form-control" placeholder="生日" th:field="*{birthDay}" />
+					<label>&nbsp;生日： </label> <input type="date" id="birthDay"
+						value="2000-06-01" class="form-control" placeholder="生日"
+						th:field="*{birthDay}" />
 				</p>
 
 				<p th:if="${registerMessage.success}" class="error-code">注册成功</p>
 				<p th:if="${registerMessage.fail}" class="error-code">用户名已被注册</p>
 				<p th:if="${registerMessage.error}" class="error-code">输入信息有误</p>
 				<button class="btn btn-lg btn-primary btn-block" type="reset">重新输入</button>
-				<button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+				<button id="submit" class="btn btn-lg btn-primary btn-block"
+					type="submit">注册</button>
 			</fieldset>
 		</form>
 	</div>

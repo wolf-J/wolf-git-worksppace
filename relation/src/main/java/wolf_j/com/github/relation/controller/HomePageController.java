@@ -26,7 +26,7 @@ public class HomePageController {
 	}
 
 	@RequestMapping(value = "/index")
-	@PreAuthorize("hasRole('user')")
+	@PreAuthorize("hasRole('USER')")
 	public String index(Model model) {
 		return "index";
 	}

@@ -38,9 +38,6 @@ spring:
     cache: false
     mode: HTML5
     encoding: UTF-8
-    
-  banner:
-    charset: UTF-8
 
     
     
