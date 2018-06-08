@@ -33,7 +33,6 @@ public class TestUserRepository {
 	
 	@Autowired
 	TestEntityManager entityManager;
-
 	@Autowired
 	UserRepository userRepositoryTest;
 

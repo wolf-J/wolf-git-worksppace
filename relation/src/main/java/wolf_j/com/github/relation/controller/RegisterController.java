@@ -3,8 +3,11 @@
  */
 package wolf_j.com.github.relation.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +30,9 @@ public class RegisterController {
 	@Qualifier("registerOrdinaryUserServiceImpl")
 	RegisterService registerOrdinaryUserServiceImpl;
 
+	@Autowired
+	HttpServletRequest httpServletRequest;
+
 	@RequestMapping(value = "/testReg")
 	public String signUp(Model model) {
 		return "testReg";
@@ -42,8 +48,6 @@ public class RegisterController {
 	String postRegisterUser(Model model, @ModelAttribute("userVOFromFrontEnd") UserFromFrontEnd userVOFromFrontEnd) {
 		RegisterMessage registerMessage = registerOrdinaryUserServiceImpl.signUpUser(userVOFromFrontEnd);
 		model.addAttribute("registerMessage", registerMessage);
-		//model.addAttribute("registerMessage", new RegisterMessage());
-		System.err.println("userVOFromFrontEnd : " + userVOFromFrontEnd.getFullName());
 		return "register";
 	}
 
