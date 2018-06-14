@@ -23,6 +23,7 @@ import wolf_j.com.github.relation.service.RelationListService;
 @Service
 public class RelationListServiceImpl implements RelationListService {
 
+	private static final int PAGE_SIZE = 10;
 	@Autowired
 	UserMessageRepository userMessageRepository;
 
@@ -32,8 +33,8 @@ public class RelationListServiceImpl implements RelationListService {
 		if (pageIndex == null)
 			pageIndex = 0;
 		if (pageIndex < 0)
-			closePersonsPage = userMessageRepository.findAll(PageRequest.of(pageIndex, 10, Sort.Direction.DESC, "id"));
-		closePersonsPage = userMessageRepository.findAll(PageRequest.of(pageIndex, 10, Sort.Direction.ASC, "id"));
+			closePersonsPage = userMessageRepository.findAll(PageRequest.of(pageIndex, PAGE_SIZE, Sort.Direction.DESC, "id"));
+		closePersonsPage = userMessageRepository.findAll(PageRequest.of(pageIndex, PAGE_SIZE, Sort.Direction.ASC, "id"));
 		return closePersonsPage.getContent();
 	}
 
