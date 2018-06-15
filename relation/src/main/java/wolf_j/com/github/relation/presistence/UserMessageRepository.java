@@ -21,24 +21,24 @@ public interface UserMessageRepository extends JpaRepository<UserMessageEntity, 
 	@Query(value = "SELECT user FROM UserMessageEntity user WHERE user.username = :username")
 	public UserMessageEntity findByUserName(@Param("username") String username);
 
-	@Query(value = "FROM UserMessageEntity user WHERE user.username like %:partusername%")
-	public Page<UserMessageEntity> findByLikeUserName(@Param("partusername") String partusername, Pageable pageable);
+	@Query(value = "FROM UserMessageEntity user WHERE UPPER(user.username) like '%'||UPPER(:username)||'%'")
+	public Page<UserMessageEntity> findByLikeUserName(@Param("username") String username, Pageable pageable);
 
-	@Query(value = "FROM UserMessageEntity user WHERE user.fullName = :fullName")
+	@Query(value = "FROM UserMessageEntity user WHERE UPPER(user.fullName) = UPPER(:fullName)")
 	public Page<UserMessageEntity> findByFullName(@Param("fullName") String fullName, Pageable pageable);
 
-	@Query(value = "FROM UserMessageEntity user WHERE user.fullName like %:fullName%")
+	@Query(value = "FROM UserMessageEntity user WHERE UPPER(user.fullName) like '%'||UPPER(:fullName)||'%'")
 	public Page<UserMessageEntity> findByLikeFullName(@Param("fullName") String fullName, Pageable pageable);
 
-	@Query(value = "FROM UserMessageEntity user WHERE user.organization = :organization")
+	@Query(value = "FROM UserMessageEntity user WHERE UPPER(user.organization) = UPPER(:organization)")
 	public Page<UserMessageEntity> findByOrganization(@Param("organization") String organization, Pageable pageable);
 
-	@Query(value = "FROM UserMessageEntity user WHERE user.organization like %:organization%")
+	@Query(value = "FROM UserMessageEntity user WHERE UPPER(user.organization) like '%'||UPPER(:organization)||'%'")
 	public Page<UserMessageEntity> findByLikeOrganization(@Param("organization") String organization,
 			Pageable pageable);
 
-	@Query(value = "FROM UserMessageEntity user WHERE user.username like %:username%  AND user.fullName like %:fullName% AND user.sex = :sex AND user.birthDay >= :startDay AND user.birthDay <= :endDay AND user.organization like %:organization%")
-	public Page<UserMessageEntity> fuzzyFindByLikeUserMessage(@Param("username") String username,
+	@Query(value = "FROM UserMessageEntity user WHERE UPPER(user.username) like '%'||UPPER(:username)||'%' AND UPPER(user.fullName) like '%'||UPPER(:fullName)||'%' AND user.sex = UPPER(:sex) AND user.birthDay >= :startDay AND user.birthDay <= :endDay AND UPPER(user.organization) like '%'||UPPER(:organization)||'%'")
+	public Page<UserMessageEntity> fuzzySearchUserMessage(@Param("username") String username,
 			@Param("fullName") String fullName, @Param("sex") String sex, @Param("startDay") String startDay,
 			@Param("endDay") String endDay, @Param("organization") String organization, Pageable pageable);
 

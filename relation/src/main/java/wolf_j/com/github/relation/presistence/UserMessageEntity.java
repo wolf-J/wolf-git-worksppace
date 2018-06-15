@@ -4,6 +4,7 @@
 package wolf_j.com.github.relation.presistence;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,8 +29,8 @@ public class UserMessageEntity implements Serializable {
 	private static final long serialVersionUID = 3052332122030341362L;
 
 	@Id
-	@GeneratedValue(strategy =  GenerationType.TABLE, generator = "UsersMessage_sequence")
-	@TableGenerator(name = "UsersMessage_sequence", allocationSize = 1,table = "SeqTable")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "UsersMessage_sequence")
+	@TableGenerator(name = "UsersMessage_sequence", allocationSize = 1, table = "SeqTable")
 	@Column(unique = true, name = "id")
 	private long id;
 
@@ -72,7 +73,6 @@ public class UserMessageEntity implements Serializable {
 		this.organization = organization;
 		this.whatUp = whatUp;
 	}
-
 
 	public long getId() {
 		return id;
@@ -146,5 +146,42 @@ public class UserMessageEntity implements Serializable {
 		this.whatUp = whatUp;
 	}
 
+	public boolean isUserMessageEntity() {
+		return validateUsername() && validateFullName() && validatePhoneNumber() && validateSex() && validateBirthDay()
+				&& validateAddress() && validateOrganization() && validateWhatUp();
+	}
+
+	private boolean validateUsername() {
+		return username.length() > 5 && username.length() < 21;
+	}
+
+	private boolean validateFullName() {
+		return true;
+	}
+
+	private boolean validatePhoneNumber() {
+		return true;
+	}
+
+	private boolean validateSex() {
+		return sex == null ? true : sex.equals("M") || sex.equals("F");
+	}
+
+	boolean validateBirthDay() {
+		return birthDay.matches("\\d{4}-((0\\d)||(1(1|2)))-[0123]\\d")
+				&& birthDay.compareTo(new SimpleDateFormat("yyyy-MM-DD").format(System.currentTimeMillis())) <= 0;
+	}
+
+	private boolean validateAddress() {
+		return true;
+	}
+
+	private boolean validateOrganization() {
+		return true;
+	}
+
+	private boolean validateWhatUp() {
+		return true;
+	}
 
 }

@@ -14,8 +14,28 @@
 <body>
 
 	<div id="homepage"></div>
-    
-    <div id="root"></div>
+
+	<div id="root"></div>
+
+	<div id="ajax">html</div>
+
+	<script type="text/javascript">
+		var url = 'http://localhost:8083/test/ajax';
+		fetch(url, {
+			method : 'GET',
+			mode : 'cors', // 避免cors攻击
+			credentials : 'include'
+		}).then(function(response) {
+			//打印返回的json数据
+			response.json().then(function(data) {
+				document.write(data);
+				console.log(data);
+			});
+		}).catch(function(e) {
+			console.log("Oops, error");
+		});
+	</script>
+
 	<script type="text/babel" src="js/index.jsx">
     </script>
 

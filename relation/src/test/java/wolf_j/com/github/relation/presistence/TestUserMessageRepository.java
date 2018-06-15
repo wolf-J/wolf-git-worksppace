@@ -39,11 +39,11 @@ public class TestUserMessageRepository {
 	@Test
 	public void testUserMessageRepositoryInsertedUserNessageSucess() {
 
-		UserMessageEntity userMessageEntity = new UserMessageEntity("wolf", "黄", null, null, null, null, null, null);
+		UserMessageEntity userMessageEntity = new UserMessageEntity("一三", "黄", null, null, null, null, null, null);
 		userMessageRepositoryTest.save(userMessageEntity);
 
 		UserMessageEntity actualuserMessageEntity = userMessageRepositoryTest.findById(1L).get();
-		Page<UserMessageEntity> userMessagePages = userMessageRepositoryTest.findByLikeUserName("wo",
+		Page<UserMessageEntity> userMessagePages = userMessageRepositoryTest.findByLikeUserName("一",
 				PageRequest.of(0, 10, Sort.Direction.ASC, "id"));
 
 		assertEquals(userMessageEntity, actualuserMessageEntity);

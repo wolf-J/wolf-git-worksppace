@@ -33,11 +33,6 @@ public class RegisterController {
 	@Autowired
 	HttpServletRequest httpServletRequest;
 
-	@RequestMapping(value = "/testReg")
-	public String signUp(Model model) {
-		return "testReg";
-	}
-
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	String getRegisterPage(Model model, @ModelAttribute("userVOFromFrontEnd") UserFromFrontEnd userVOFromFrontEnd) {
 		model.addAttribute("registerMessage", new RegisterMessage());
