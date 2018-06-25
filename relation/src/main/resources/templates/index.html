@@ -14,12 +14,14 @@
 <body>
 
 	<div id="homepage"></div>
+	
+	<div id="example"></div>
 
 	<div id="root"></div>
 
-	<div id="ajax">html</div>
+	<div id="ajax"></div>
 
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		var url = 'http://localhost:8083/test/ajax';
 		fetch(url, {
 			method : 'GET',
@@ -34,7 +36,7 @@
 		}).catch(function(e) {
 			console.log("Oops, error");
 		});
-	</script>
+	</script> -->
 
 	<script type="text/babel" src="js/index.jsx">
     </script>
@@ -42,6 +44,11 @@
 	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="log out" />
+	</form>
+	
+	<form th:action="@{/test/file}" th:method="post" enctype="multipart/form-data">
+	<input th:type="file" th:name="file">
+	<input th:type="submit" th:value="uploadFile">
 	</form>
 </body>
 </html>

@@ -1,4 +1,7 @@
-
+ReactDOM.render(
+    <h1>Hello, world!</h1>,
+    document.getElementById( 'example' )
+);
 
 class Toggle extends React.Component {
     constructor( props ) {
@@ -28,10 +31,7 @@ ReactDOM.render(
     <Toggle />,
     document.getElementById( 'root' )
 );
-ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.getElementById( 'example' )
-);
+
 
 
 class MyComponent extends React.Component {
@@ -45,13 +45,16 @@ class MyComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch( "http://localhost:8083/test/ajax" )
-            .then( res => res.json() )
+        fetch( "http://localhost:8083/test/ajax", {
+            method: 'GET',
+            mode: 'cors', // 避免cors攻击
+            credentials: 'include'
+        } ).then( res => res.json() )
             .then(
             ( result ) => {
                 this.setState( {
                     isLoaded: true,
-                    items: result.items
+                    items: result
                 } );
             },
             // Note: it's important to handle errors here
@@ -60,7 +63,7 @@ class MyComponent extends React.Component {
             ( error ) => {
                 this.setState( {
                     isLoaded: true,
-                    error
+                    error: error
                 } );
             }
             )
@@ -75,7 +78,6 @@ class MyComponent extends React.Component {
         } else {
             return (
                 <ul>
-                    ajax
                     {items.map( item => (
                         <li key={item.username}>
                             {item.username} {item.role}

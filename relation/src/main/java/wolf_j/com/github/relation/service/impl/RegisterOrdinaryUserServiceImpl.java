@@ -1,6 +1,3 @@
-/**
- * 
- */
 package wolf_j.com.github.relation.service.impl;
 
 import javax.transaction.Transactional;
