@@ -3,8 +3,6 @@
  */
 package wolf_j.com.github.common;
 
-import wolf_j.com.github.common.annotation.ValidationBean;
-
 /**
  * @author wolf-J
  *

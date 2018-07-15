@@ -17,7 +17,9 @@ public class ValidationHolder {
 				"classpath:spring/**/*.xml");
 		
 		System.out.println("getBeans Success!");
-		return context.getBean(BeanId);
+		Object bean = context.getBean(BeanId);
+		context.close();
+		return bean;
 		
 	}
 

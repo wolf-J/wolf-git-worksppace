@@ -3,47 +3,33 @@
  */
 package wolf_j.com.github.common;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 /**
  * @author wolf-J
  *
  */
-public class TestThread implements Runnable {
+public class CallableCase {
 
-	private String value;
+	public static void main(String[] args) throws ExecutionException, InterruptedException {
+		ExecutorService executor = Executors.newCachedThreadPool();
+		Future<Long> future = executor.submit(new Callable<Long>() {
+			 @Override
+		        public Long call() throws Exception {
 
-	/**
-	 * @return the value
-	 */
-	public String getValue() {
-		return value;
-	}
+		            long sum = 0;
+		            for (int i = 0; i < 90; i++) {
+		                sum += i;
+		            }
 
-	/**
-	 * @param value the value to set
-	 */
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	/**
-	 * 
-	 */
-	public TestThread(String value) {
-		this.setValue(value);
-		int a= 0;
-		a++;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Runnable#run()
-	 */
-	@Override
-	public void run() {
-		for (int i = 0; i < 10; i++) {
-			System.out.println(getValue() + i);
-		}
+		            return sum;
+		        }
+		});
+		System.out.println(future.get());
 	}
 
 }
