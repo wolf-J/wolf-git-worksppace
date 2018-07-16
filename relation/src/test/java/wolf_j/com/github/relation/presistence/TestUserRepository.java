@@ -6,8 +6,6 @@ package wolf_j.com.github.relation.presistence;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Iterator;
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,8 +3,6 @@
  */
 package wolf_j.com.github.common;
 
-import java.util.ArrayList;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -16,6 +14,7 @@ public class SpringCase {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:spring/**/*.xml");
 		String[] beans = context.getBeanDefinitionNames();
+		context.close();
 		for (int i = 0; i < beans.length; i++) {
 			System.out.println(beans[i]);
 		}
