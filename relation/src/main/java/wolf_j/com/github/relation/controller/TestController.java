@@ -34,7 +34,7 @@ public class TestController {
 	@RequestMapping(value = "/ajax")
 	@ResponseBody
 	public List<UserEntity> testAjax(Model model) {
-		UserEntity userEntity = new UserEntity("a", "b", "c");
+		UserEntity userEntity = new UserEntity("username", "password", "role");
 		List<UserEntity> userEntityList = new ArrayList<>();
 		userEntityList.add(userEntity);
 		return userEntityList;

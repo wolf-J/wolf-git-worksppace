@@ -45,11 +45,11 @@ class MyComponent extends React.Component {
     }
 
     componentDidMount() {
-        fetch( "http://localhost:8083/test/ajax", {
+        fetch("/test/ajax", {
             method: 'GET',
             mode: 'cors', // 避免cors攻击
             credentials: 'include'
-        } ).then( res => res.json() )
+        } ).then( res => res.json())
             .then(
             ( result ) => {
                 this.setState( {
@@ -80,7 +80,7 @@ class MyComponent extends React.Component {
                 <ul>
                     {items.map( item => (
                         <li key={item.username}>
-                            {item.username} {item.role}
+                            {item.username} and {item.role}
                         </li>
                     ) )}
                 </ul>
@@ -93,3 +93,40 @@ ReactDOM.render(
     <MyComponent />,
     document.getElementById( 'ajax' )
 );
+
+
+class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+    }
+
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <NameForm />,
+    document.getElementById('form')
+  );
