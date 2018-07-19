@@ -66,7 +66,7 @@ class SeleniumCaseTest {
 	}
 
 	@Test
-	void testSeleniumCheckByget() {
+	void testSeleniumCheckByGet() {
 		driver.get("http://cigp3r8cweb01.aia.biz/tcs/clock_checkrec.asp");
 
 		driver.get("http://cigp3r8cweb01.aia.biz/tcs/clock_logrec.asp?Tuserid=ASNPHM6");
