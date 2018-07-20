@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -45,7 +45,7 @@ class SeleniumCaseTest {
 	}
 	
 	@Test
-	@Ignore
+	@Disabled
 	void testSeleniumCheckBybutton() {
 		driver.get("http://cigp3r8cweb01.aia.biz/tcs/clock_checkrec.asp");
 
@@ -66,7 +66,7 @@ class SeleniumCaseTest {
 	}
 
 	@Test
-	void testSeleniumCheckByget() {
+	void testSeleniumCheckByGet() {
 		driver.get("http://cigp3r8cweb01.aia.biz/tcs/clock_checkrec.asp");
 
 		driver.get("http://cigp3r8cweb01.aia.biz/tcs/clock_logrec.asp?Tuserid=ASNPHM6");
