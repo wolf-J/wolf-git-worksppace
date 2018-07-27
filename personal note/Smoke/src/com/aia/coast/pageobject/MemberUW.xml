@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.MemberUW">
+		<!--Locator lists -->
+		<locator type="" timeOut="10" value="//div[contains(text(),'Gen Medical Requirement')]">GenMedicalReq</locator>
+		<locator type="" timeOut="30" value="//div[@section-name='U/W Requirement Information']/div/table/tbody/tr/td/a">editUWRequirement</locator>
+		<locator type="" timeOut="5" value="//input[@id='uw_requirement_receiveDate']">receiveDate</locator>
+		<locator type="" timeOut="5" value="//div/a[contains(text(),'Update')]">updateUWRequirement</locator>
+		<locator type="" timeOut="5" value="//div[@section-name='Decision Information']/div/table/tbody/tr/td[2]/a/span">DecisionInfoEdits</locator>
+		<locator type="" timeOut="5" value="//input[@name='decision_uwStatus_input']">UWStatus</locator>
+		<locator type="" timeOut="30" value="//div[@class='loadingAni']">loading</locator>
+		<locator type="" timeOut="30" value="//div[@class='loadingAni_bg']">loadingAni</locator>
+		<locator type="" timeOut="15" vaule="//div[@section-name='U/W Requirement Information']/div/table[@role='grid']/tbody/tr">UWRequirementInfo</locator>
+		<locator type="" timeOut="20" value="//button[contains(text(),'UnPending')]">UnPending</locator>
+		
+		<locator type="" timeOut="15" value="//a[@title='Go To Section']">goToSection</locator>
+		<locator type="" timeOut="5" value="//a[@alt='PendingInfomation']">pendingInfoPart</locator>
+		
+		<locator type="" timeOut="5" value="//div[@section-name='PENDING INFORMATION']/div/table/tbody/tr/td[2]/a">pendingInfoEdits</locator>
+		<locator type="" timeOut="10" value="//input[@name='PendingInfomation_casePendingStatus_input']">pendingInfoStatus</locator>
+		<locator type="" timeOut="5" value="//input[@name='PendingInfomation_casePendingStatus_input']/following-sibling::*[1]">pendingInfoStatusArrow</locator>
+		<locator type="" timeOut="5" value="//textarea[@id='PendingInfomation_unPendingRemark']">unPendingRemark</locator>
+		<locator type="" timeOut="5" value="//div/a[contains(text(),'Update')]">updateUnPendingInfo</locator>
+	</page>
+</map>

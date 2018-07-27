@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.MedicalCardPage">
+		<!--Locator lists -->
+	
+		<locator type="" timeOut="8" value="//div[@section-name='Policy Sub Office Setting']/div/table/tbody/tr/td/a">subOfficeList</locator>
+		<locator type="" timeOut="8" value="//input[@name='policySubOffice_sendTo_input']">medCardSendTo</locator>
+		
+		<locator type="" timeOut="8" value="//div[@section-name='Policy Plan Setting']/div/table/tbody/tr/td/a">planSettingList</locator>
+		<locator type="" timeOut="10" value="//input[@name='policyPlan_cardVersion_input']">cardVersion</locator>
+		<locator type="" timeOut="8" value="//span[@aria-controls='policyPlan_cardVersion_listbox']">cardVerDropDown</locator>
+		<locator type="" timeOut="5" value="//ul[@id='policyPlan_cardVersion_listbox']/li">carVerList</locator>
+		
+		<locator type="" timeOut="5" value="//input[@name='policyPlan_benefitSumVersion_input']">benefitSumVersion</locator>
+		<locator type="" timeOut="5" value="//span[@aria-controls='policyPlan_benefitSumVersion_listbox']">benefSumVerDropDown</locator>
+		<locator type="" timeOut="8" value="//ul[@id='policyPlan_benefitSumVersion_listbox']/li">benefSumVerList</locator>
+		
+		<locator type="" timeOut="8" value="//input[@id='policyPlan_applytoAll']/following-sibling::*">applyAll</locator>
+		
+		<locator type="" timeOut="7" value="//input[@id='policyPlan_policyNo']">policyNo</locator>
+		<locator type="" timeOut="5" value="//input[@id='btnPopupSave']">save</locator>
+	</page>
+</map>

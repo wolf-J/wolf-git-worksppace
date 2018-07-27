@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+<page name="com.aia.coast.pageobject.IndividualReceivable">
+
+	<locator type="" timeOut="50" value="//section[@id='IOperationType']/div[2]/div[2]/div/label/span">fileUpload</locator>
+<!-- 	<locator type="" timeOut="50" value="//section[@id='IUploadFile']/div[2]/div/div/div/span[3]">selectFiles</locator>	
+ -->	
+ <locator type="" timeOut="50" value="//input[@id='upload_IUploadFile']">selectFiles</locator>	
+	
+	<locator type="" timeOut="50" value="//button[@class='k-button k-upload-selected']">upload</locator>	
+
+	<locator type="" timeOut="50" value="//button[@id='btnSubmit']">submit</locator>	
+
+	<locator type="" timeOut="20" value="//input[@id='IUploadBasic_BatchId']">batchId</locator>	
+		
+    <locator type="" timeOut="120" value="//div[@id='radioContain_200']/label/span">manual</locator>
+    
+    <locator type="" timeOut="120" value="//a[@id='Individual_basic_SearchInfo']">search</locator>
+    
+    <locator type="" timeOut="120" value="//div[@id='cust_grid_IBill_information']/div[2]/table/tbody/tr[1]/td/label/span">billChecked1</locator>
+    
+    <locator type="" timeOut="120" value="//div[@id='cust_grid_IBill_information']/div[2]/table/tbody/tr[2]/td/label/span">billChecked2</locator>
+    
+    <locator type="" timeOut="120" value="//div[@id='cust_grid_IReceivableHistory']/div[2]/table/tbody/tr[1]/td/label/span">receivableChecked1</locator>
+    
+   <locator type="" timeOut="120" value="//div[@id='cust_grid_IReceivableHistory']/div[2]/table/tbody/tr[2]/td/label/span">receivableChecked2</locator>
+    
+   <locator type="" timeOut="120" value="//a[@id='ITotal_information_calculate']">calculate</locator>
+   
+   <locator type="" timeOut="120" value="//section[@id='IOperation_type']/div[2]/div[1]/div/label/span">refund</locator>
+   
+   <locator type="" timeOut="120" value="//section[@id='IOperation_type']/div[2]/div[2]/div/label/span">pending</locator>
+   
+   <locator type="" timeOut="120" value="//div[@id='cust_grid_IRefund']/div[3]/table/tbody/tr/td[2]/a/span">edit</locator>   
+
+   <locator type="" timeOut="120" value="//div[@id='cust_grid_IRefund']/div[4]/table/tbody/tr/td[1]/input">refundPolicyNo</locator>
+   
+   <locator type="" timeOut="120" value="//div[@id='cust_grid_IRefund']/div[4]/table/tbody/tr/td[8]/span/span/span/span">refundTypeClick</locator>
+   
+   <locator type="" timeOut="120" value="//div[@id='cust_grid_IRefund']/div[4]/table/tbody/tr/td[9]/span/span/span/span">refundMethodClick</locator>
+   
+   <locator type="" timeOut="120" value="//div[@id='IRefund_refundType-list']/div[2]/ul/li[1]">refundType</locator>
+   
+   <locator type="" timeOut="120" value="//div[@id='IRefund_refundMethod-list']/div[2]/ul/li[1]">refundMethod</locator>
+
+
+
+   <locator type="" timeOut="120" value="//textarea[@id='IReceivableReason_Reason']">iReceivableReason</locator>
+
+   
+   
+    
+</page>
+
+</map>

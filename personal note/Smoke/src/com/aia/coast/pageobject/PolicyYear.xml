@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.PolicyYear">
+		<!--Locator lists -->
+		<locator type="" timeOut="5" value="//a[contains(text(),'Update')]">update</locator>
+		<locator type="" timeOut="10" value="//input[@id='policy_year_ToDate']">toDate</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Policy Year']/div/table/tbody/tr/td/a">editPolicyYear</locator>
+		
+		<locator type="" timeOut="10" value="//div[@class='loadingAni_bg']">loadingImg</locator>
+		<locator type="" timeOut="30" value="//div[@class='loadingAni']">loading</locator>
+	</page>
+</map>

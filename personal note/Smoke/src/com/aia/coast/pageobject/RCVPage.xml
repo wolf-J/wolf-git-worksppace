@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.RCVPage">
+		<!--Locator lists -->
+		<locator type="" timeOut="10" value="//section[@id='receivable_type']/div/div[1]/div/label/span">premiumRcvType</locator>
+		<locator type="" timeOut="10" value="//input[@id='receivable_query_type_pay']/following-sibling::*[1]">payRcvQueryType</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Bill information']/div/table/tbody/tr/td[1]/label">billInfoCheckList</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Receivable information']/div/a/div[contains(text(),'Add')]">addRcvInfo</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Receivable information']/div/table/tbody/tr/td[2]/a">RcvEditList</locator>
+	
+	
+		<locator type="" timeOut="15" value="//div[@class='loadingAniX']">loading</locator>
+		<locator type="" timeOut="15" value="//div[@class='loadingAni_bg']">loadingbg</locator>
+		<locator type="" timeOut="6" value="//input[@name='Insured_subOrganizationId_input']">subOfficeCode</locator>
+		<locator type="" timeOut="6" value="//span[@aria-controls='Insured_subOrganizationId_listbox']">subOfficeArrow</locator>
+		<locator type="" timeOut="6" value="//li[contains(text(),'100-Automation Team')]">subOfficeItem</locator>
+		
+		<locator type="" timeOut="6" value="//input[@name='Insured_certificationNo_input']">CertNo</locator>
+		<locator type="" timeOut="6" value="//span[@aria-controls='Insured_certificationNo_listbox']">CertNoArrow</locator>
+		<locator type="" timeOut="6" value="//li[contains(text(),'Select All')]">CertNoItem</locator>
+		<locator type="" timeOut="6" value="//section[@id='billInfo']/div/div/div/ul/li[5]/span[2]">MemberTab</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Member']/div/table/tbody/tr[1]">firstMemberData</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Member']/div/table/tbody/tr/td[10]">groupMemPremium</locator>
+		<locator type="" timeOut="6" value="//section[@id='billInfo']/div/div/div/ul/li[6]/span[2]">FeeTab</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Fee']/div/table/tbody/tr/td[5]">groupFeeAmount</locator>		
+
+		<locator type="" timeOut="6" value="//div[@section-name='Bill Information']/div[@data-role='pager']/span/span">showAllBill</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Bill Information']/div/table/tbody/tr/td[13]">indivMemPremium</locator>
+		<locator type="" timeOut="6" value="//div[@section-name='Bill Information']/div/table/tbody/tr/td[15]">indivCommision</locator>
+		<locator type="" timeOUt="6" value="//*[@id='cust_grid_IndividualBillInfo']/div[3]/table/tbody/tr[1]/td[1]">BillItem</locator>
+
+
+		<locator type="" timeOut="15" value="//a[@title='Go To Section']">goToSection</locator>
+		<locator type="" timeOut="5" value="//a[@alt='PendingInfomation']">pendingInfoPart</locator>
+		<locator type="" timeOut="5" value="//div[@section-name='PENDING INFORMATION']/div/table/tbody/tr/td[2]/a">pendingInfoEdits</locator>
+		<locator type="" timeOut="10" value="//input[@name='PendingInfomation_casePendingStatus_input']">pendingInfoStatus</locator>
+		<locator type="" timeOut="5" value="//input[@name='PendingInfomation_casePendingStatus_input']/following-sibling::*[1]">pendingInfoStatusArrow</locator>
+		<locator type="" timeOut="5" value="//textarea[@id='PendingInfomation_unPendingRemark']">unPendingRemark</locator>
+		<locator type="" timeOut="5" value="//div/a[contains(text(),'Update')]">updateUnPendingInfo</locator>
+		<locator type="" timeOut="20" value="//button[contains(text(),'UnPending')]">UnPending</locator>
+	</page>
+</map>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.PolicyInfo">
+		<!--Locator lists -->
+		<locator type="" timeOut="5" value="//input[@id='policy_initialEffectiveDate']">policyInitEffectiveDate</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_policyDesc']">policyDesc</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_policyCategory_input']">policyCategory</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_marketProgramType_input']">marketingProgramType</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_marketProgramType_input']/following-sibling::*">marketingProgramTypeArrowDone</locator>
+		<locator type="" timeOut="8" value="//ul[@id='policy_marketProgramType_listbox']/li">marketingProgramTypeList</locator>
+		
+		<locator type="" timeOut="5" value="//input[@name='policy_policyType_input']">policyType</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_teamId_input']">teamCode</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_servicingOfficerUserId_input']">servicingOfficer</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_serviceAeUserId_input']">serviceAE</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_firstYearRep_input']">firstYearSaleRep1</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_renewYearRep_input']">renewalYearSaleRep1</locator>
+		<locator type="" timeOut="5" value="//input[@id='policy_VoluntaryIND']/following-sibling::*">includeVoluntaryPolicy</locator>
+	
+		<locator type="" timeOut="5" value="//span[@aria-controls='policy_teamId_listbox']">teamCodeDropDown</locator>
+		<locator type="" timeOut="5" value="//ul[@id='policy_teamId_listbox']/li[1]">defaultTeamCodeItem</locator>
+		<locator type="5" timeOut="5" value="//ul[@id='policy_teamId_listbox']/li">allTeamCode</locator>
+		<locator type="5" timeOut="5" value="//span[@aria-controls='policy_serviceAeUserId_listbox']">teamLeaderDropDown</locator>
+		<locator type="5" timeOut="5" value="//ul[@id='policy_serviceAeUserId_listbox']/li">allTeamLeader</locator>
+		
+		<locator type="5" timeOut="5" value="//span[@aria-controls='policy_servicingOfficerUserId_listbox']">teamMemerDropDown</locator>
+		<locator type="5" timeOut="5" value="//ul[@id='policy_servicingOfficerUserId_listbox']/li">allTeamMember</locator>
+		
+		<locator type="5" timeOut="5" value="//span[@aria-controls='policy_firstYearRep_listbox']">firstYearDropDown</locator>
+		<locator type="5" timeOut="5" value="//ul[@id='policy_firstYearRep_listbox']/li">allFirstYear</locator>
+		
+		<locator type="5" timeOut="5" value="//span[@aria-controls='policy_renewYearRep_listbox']">renewalYearDropDown</locator>
+		<locator type="5" timeOut="5" value="//ul[@id='policy_renewYearRep_listbox']/li">allRenewalYear</locator>
+		
+		<locator type="5" timeOut="5" value="//input[@id='policy_enrollPeriodDays']/preceding-sibling::*">enrollDate</locator>
+		<locator type="5" timeOut="5" value="//input[@id='policy_enrollPeriodDays']">enrollDateBox</locator>
+		
+		<locator type="" timeOut="5" value="//input[@id='policy_quickApprove']">quickApprove</locator>
+		<locator type="" timeOut="6" value="//input[@id='policy_quickApprove']/following-sibling::*[1]">quickApproveBtn</locator>
+		<locator type="" timeOut="10" value="//div[@class='loadingAni_bg']">loadingImg</locator>
+		<locator type="" timeOut="30" value="//div[@class='loadingAni']">loading</locator>
+		
+	</page>
+</map>

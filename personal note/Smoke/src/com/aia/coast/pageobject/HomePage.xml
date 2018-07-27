@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.HomePage">
+		<!--Locator lists -->
+		<locator type="" timeOut="150" value="//input[@class='k-input' and @role='combobox']">query</locator>
+		<locator type="" timeOut="10" value="//a[@id='get_task']">getJob</locator>
+		
+		<locator type="" timeOut="60" value="//div[@id='staDataTable']/div[2]/table/tbody/tr[1]">firstJob</locator>
+		
+		<locator type="" timeOut="60" value="//div[@id='staDataTable1']/div[2]/table/tbody/tr[1]">firstPendingJob</locator>
+		
+		<locator type="" timeOut="15" value="//div[@id='staDataTable']/div[2]/table/tbody/tr">jobList</locator>
+		<locator type="" timeOut="5" value="//div/div[contains(text(),'OPEN TASK')]">openTask</locator>
+		<locator type="" timeOut="120" value="//div[@id='dashboardGridLoading' and @style='display: block;']">finishLoading</locator>
+		<locator type="" timeOut="10" value="//div[@class='loadingAni_bg']">loadingImg</locator>
+		<locator type="" timeOut="30" value="//div[@class='loadingAni']">loading</locator>
+		
+		<locator type="" timeOut="10" value="//div[@class='loadingAniX']">loadingAniX</locator>
+		<locator type="" timeOut="180" value="//span[contains(text(),'Dashboard')]">Home</locator>
+		<locator type="" timeOut="10" value="//div[@id='user_info']">userinfo</locator>
+		<locator type="" timeOut="5" value="//li[@id='logOut']">logout</locator>
+		
+		<locator type="" timeOut="5" value="//div[@id='staDataTable']/div[1]/div/table/thead/tr/th[@data-field='policyNo']/a[@class='k-header-column-menu']">policyNoArrow</locator>
+		<locator type="" timeOut="5" value="//div[@id='staDataTable1']/div[1]/div/table/thead/tr/th[@data-field='policyNo']/a[@class='k-header-column-menu']">pendingPolicyNoArrow</locator>
+		
+		<locator type="" timeOut="5" value="//div[@id='staDataTable']/div/div/table/thead/tr/th[@data-field='processName']/a/span">processArrow</locator>
+		<locator type="" timeOut="5" value="//ul[@data-role='menu']/li[6]/span">filter</locator>
+		<locator type="" timeOut="5" value="//form[@class='k-filter-menu']/div/span[1]/span">filterType</locator>
+		<locator type="" timeOut="5" value="//body/div[11]/div/ul/li[6]">processFilter</locator>
+		
+		<locator type="" timeOut="5" value="//input[@data-bind='value:filters[0].value']">filterInput</locator>
+		<locator type="" timeOut="10" value="//button[@type='submit' and contains(text(),'Filter')]">filterBtn</locator>
+		
+		<locator type="" timeOut="20" value="//div[contains(text(),'JOB PENDING')]">pendingBtn</locator>
+		
+		
+		<locator type="" timeOut="100" value="//a[@id='create_task']">createTask</locator>
+		<locator type="" timeOut="15" value="//div[@id='logo']">backHome</locator>
+		
+		<locator type="" timeOut="120" value="//input[@aria-owns='comboBox_queryProcess_listbox']">processName</locator>
+		<locator type="" timeOut="10" value="//input[@aria-owns='comboBox_queryActivity_listbox']">activityName</locator>
+		<locator type="" timeOut="10" value="//span[@aria-controls='comboBox_queryActivity_listbox']">activityDropDown</locator>
+		<locator type="" timeOut="10" value="//ul[@id='comboBox_queryActivity_listbox']/li[contains(text(),'Create New Policy')]">createNewPolicy</locator>
+	
+		<!-- <locator type="" timeOut="10" value="//div[@id='Notif_Box_Message_content']">notifBox</locator> -->
+		<locator type="" timeOut="5" value="//div[@id='Notify_msg_show_close']">closeNotif</locator>
+		
+		<locator type="" timeOut="30" value="//div[@id='staDataTable']/div/table/tbody/tr[1]/td[4]">firstPolicyNumber</locator>
+		<locator type="" timeOut="5" value="//div[@id='staDataTable']/div/table/tbody/tr[1]/td[5]">firstPolicyName</locator>
+	</page>
+</map>

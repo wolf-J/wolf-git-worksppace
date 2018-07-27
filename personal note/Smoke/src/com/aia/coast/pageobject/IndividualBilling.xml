@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.IndividualBilling">
+		<!--Locator lists -->
+		<locator type="" timeOut="5" value="//input[@name='individual_bill_DefaultPaySchedule_input']">paySchedule</locator>
+		<locator type="" timeOut="5" value="//input[@name='individual_bill_PayChequeInFirstXMonth']/preceding-sibling::*[1]">payByCheckFirstXMonth</locator>
+		<locator type="" timeOut="5" value="//input[@name='individual_bill_WaivePremiumonMonth']/preceding-sibling::*[1]">waivePreniumOnMonth</locator>
+		<locator type="" timeOut="5" value="//input[@name='individual_bill_idvAutoRenewInd']/following-sibling::*">autoRenew</locator>
+		<locator type="" timeOut="5" value="//input[@name='individual_bill_RenewBillingDayMonth']">renewBillDayMonth</locator>
+		<locator type="" timeOut="5" value="//input[@name='individual_bill_floatRateInd']/following-sibling::*">floatRate</locator>
+	</page>
+</map>

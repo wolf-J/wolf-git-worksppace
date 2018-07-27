@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.PackageScheme">
+		<!--Locator lists -->
+		<locator type="" timeOut="5" value="//input[@name='package_scheme_pkgProductId_input']">packageProduct</locator>
+		<locator type="" timeOut="5" value="//input[@name='package_scheme_schemeCode_input']">packagePlan</locator>
+		<locator type="" timeOut="5" value="//input[@name='package_scheme_schemeDesc']">planDesc</locator>
+		<locator type="" timeOut="5" value="//div/a[contains(text(),'Update')]">updateBtn</locator>
+		<locator type="" timeOut="5" value="//span[@aria-controls='package_scheme_pkgProductId_listbox']">pkgProductArrow</locator>
+		<locator type="" timeOut="5" value="//span[@aria-controls='package_scheme_schemeCode_listbox']">pkgPlanArrow</locator>
+		
+		<locator type="" timeOut="5" value="//input[@id='package_scheme_flexiSchemeCode']">flexPackagePlan</locator>
+		
+		<locator type="" timeOut="6" value="//div[@data-container-for='package_scheme_subProductCode']/div/div/input">subProduct</locator>
+		<!-- <locator type="" timeOut="6" value="//div[@data-container-for='package_scheme_subProductCode']">subProduct</locator> -->
+		
+		<locator type="" timeOut="10" value="//div[@section-name='Package Scheme']/div/table[@role='grid']/tbody/tr">packageSchemesList</locator>
+		
+		<locator type="" timeOut="6" value="//ul[@id='package_scheme_subProductCode_listbox']/li">subProductSelect</locator>
+		<locator type="" timeOut="8" value="//input[@id='package_scheme_initialEffectiveDate']">schemeEffectiveDate</locator>
+		<locator type="" timeOut="3" value="//input[@id='package_scheme_effectiveDate']">effectiveDate</locator>
+	</page>
+</map>

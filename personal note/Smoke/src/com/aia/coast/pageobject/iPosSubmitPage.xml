@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.iPosSubmitPage">
+		<!--Locator lists -->
+		
+		<locator type="" timeOut="10" value="//input[@id='client_receivedAppForm']/following-sibling::*[1]">appForm</locator>
+		<locator type="" timeOut="15" value="//div[contains(text(),'JOB IN PROGRESS')]">jobInProgress</locator>
+		<locator type="" timeOut="15" value="//a[@title='Go To Section']">goToSection</locator>
+		<locator type="" timeOut="5" value="//a[@alt='policy']">policy</locator>
+		<locator type="" timeOut="5" value="//a[@alt='policy_product']">policy_product</locator>
+		<locator type="" timeOut="5" value="//a[@alt='product_plan']">product_plan</locator>
+		<locator type="" timeOut="5" value="//iframe[@class='k-content-frame']">iFrame</locator>
+		
+		<locator type="" timeOut="5" value="//input[@name='policy_policyType_input']">policyType</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_servicingOfficerUserId_input']">policy_servicingOfficerUserId</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_firstYearRep_input']">policy_FirstYearSaleRep</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_renewYearRep_input']">policy_RenewalYearSale</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_serviceAeUserId_input']">policy_serviceAeUserId</locator>
+		
+		<locator type="" timeOut="5" value="//div[@section-name='Policy product']/div[@data-role='pager']/span/span">policy_product_section</locator>
+		<locator type="" timeOut="5" value="//div[@section-name='Product Plan']/div[@data-role='pager']/span/span">product_plan_section</locator>
+		<locator type="" timeOut="5" value="//div[@section-name='Policy product']/div[4]/table/tbody/tr">policy_product_table</locator>
+		<locator type="" timeOut="5" value="//div[@section-name='Product Plan']/div/table/tbody">product_plan_table</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_product_treatyCode_input']">reInsuranceTreatyCode</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_product_commissionId_input']">commisCode</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_product_billPlanId_input']">billPlan</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_product_valuationParmId_input']">valCode</locator>
+		
+		<locator type="" timeOut="5" value="//input[@name='policy_product_nelAmt']/preceding-sibling::*[1]">nelAmount</locator>
+		<locator type="" timeOut="5" value="//input[@name='policy_product_nelAge']/preceding-sibling::*[1]">nelAge</locator>
+		
+		<locator type="" timeOut="15" value="//div[@class='loadingAni_bg']">loadingbg</locator>
+		<locator type="" timeOut="30" value="//div[@class='loadingAni']">loading</locator>
+		<locator type="" timeOut="5" value="//input[@id='btnPopupSave']">save</locator>
+		<locator type="" timeOut="5" value="//button[contains(text(),'Submit')]">btnSubmit</locator>
+		
+	</page>
+</map>

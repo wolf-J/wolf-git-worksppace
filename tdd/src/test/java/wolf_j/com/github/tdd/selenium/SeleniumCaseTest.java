@@ -2,6 +2,7 @@ package wolf_j.com.github.tdd.selenium;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
@@ -37,13 +38,16 @@ class SeleniumCaseTest {
 		driver.get("https://www.baidu.com/");
 		WebElement input = driver.findElement(By.id("kw"));
 		input.sendKeys("good");
-		
+
 		WebElement submit = driver.findElement(By.id("su"));
 		submit.submit();
-		
+
 		assertEquals("百度一下，你就知道", driver.getTitle());
+
+		WebElement wrapper_wrapper = driver.findElement(By.id("wrapper_wrapper"));
+		assertEquals("", wrapper_wrapper.getText());
 	}
-	
+
 	@Test
 	@Disabled
 	void testSeleniumCheckBybutton() {
@@ -54,7 +58,7 @@ class SeleniumCaseTest {
 
 		assertEquals("Time Clock System - Web Version - 3", driver.getTitle());
 	}
-	
+
 	@Test
 	void testSeleniumCheckByform() {
 		driver.get("http://cigp3r8cweb01.aia.biz/tcs/clock_checkrec.asp");

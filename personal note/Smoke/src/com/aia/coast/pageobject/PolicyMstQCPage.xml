@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<map>
+	<!--locator of page map info -->
+	<page pageName="com.aia.coast.pageObject.PolicyMstQCPage">
+		<!--Locator lists -->
+	
+		<locator type="" timeOut="60" value="//div[@id='staDataTable']/div[2]/table/tbody/tr[1]">firstJob</locator>
+		<locator type="" timeOut="5" value="//div/div[contains(text(),'OPEN TASK')]">openTask</locator>
+		<locator type="" timeOut="120" value="//div[@id='dashboardGridLoading' and @style='display: block;']">finishLoading</locator>
+		<locator type="" timeOut="10" value="//div[@class='loadingAni_bg']">loading</locator>
+		<locator type="" timeOut="10" value="//div[@id='user_info']">userinfo</locator>
+		<locator type="" timeOut="5" value="//li[@id='logOut']">logout</locator>
+		
+		<locator type="" timeOut="15" value="//button[contains(text(),'Submit')]">btnSubmit</locator>
+	</page>
+</map>
