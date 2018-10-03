@@ -12,7 +12,7 @@ import wolf_j.com.github.relation.service.bean.UserFromFrontEnd;
  */
 
 public interface RegisterService {
-	
+
 	RegisterMessage signUpUser(UserFromFrontEnd userVOFromFrontEnd);
 
 }

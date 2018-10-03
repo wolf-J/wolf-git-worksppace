@@ -5,10 +5,16 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;DatabaseName=Relation;integratedSecurity=false;sendStringParametersAsUnicode=false
-    username: sa
-    password: Password@123
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#    url: jdbc:sqlserver://localhost:1433;DatabaseName=Relation;integratedSecurity=false;sendStringParametersAsUnicode=false
+#    username: sa
+#    password: Password@123
+    
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/DBCOAST
+    username: postgres
+    password: hj965691203
+
     tomcat:
       max-active: 10
       max-wait: 5000

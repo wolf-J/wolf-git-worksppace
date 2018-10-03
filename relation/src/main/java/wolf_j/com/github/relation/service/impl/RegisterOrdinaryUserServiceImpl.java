@@ -39,7 +39,7 @@ public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 		String password = new BCryptPasswordEncoder().encode(userFromFrontEnd.getPassword());
 		UserEntity user = new UserEntity(userFromFrontEnd.getUsername(), password, ROLE);
 		UserMessageEntity userMessage = userFromFrontEnd.toUserMessageEntity();
-		if (isExiestsUser(user))
+		if (isExistsUser(user))
 			registerMessage.setFail(true);
 		else {
 			saveUserAndInfo(user, userMessage);
@@ -53,7 +53,7 @@ public class RegisterOrdinaryUserServiceImpl implements RegisterService {
 				&& userFromFrontEnd.getPassword().matches("\\w{6,20}");
 	}
 
-	private boolean isExiestsUser(UserEntity user) {
+	private boolean isExistsUser(UserEntity user) {
 		return userRepository.findByUserName(user.getUsername()) == null ? false : true;
 	}
 
