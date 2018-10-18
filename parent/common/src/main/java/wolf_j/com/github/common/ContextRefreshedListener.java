@@ -18,7 +18,8 @@ public class ContextRefreshedListener implements ApplicationListener<ContextRefr
             for(Object bean:beans.values()){  
                 System.out.println(bean==null?"null":bean.getClass().getName());  
             }  
-            System.out.println("=====ContextRefreshedEvent====="+event.getSource().getClass().getName());  
+            System.out.println("=====ContextRefreshedEvent====="+event.getSource().getClass().getName());
+            System.out.println("Listen End!");
         }  
     }  
 }

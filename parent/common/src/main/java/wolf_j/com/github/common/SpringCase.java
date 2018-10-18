@@ -5,6 +5,8 @@ package wolf_j.com.github.common;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Map;
+
 /**
  * @author wolf-J
  *
@@ -13,19 +15,16 @@ public class SpringCase {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:spring/**/*.xml");
-		String[] beans = context.getBeanDefinitionNames();
+		Map<String, Object> beans = context.getBeansOfType(Object.class);
 		context.close();
-		for (int i = 0; i < beans.length; i++) {
-			System.out.println(beans[i]);
-		}
 
-		System.out.println("Listen End!");
+		beans.forEach((name, value) -> {
+			if (name.contains("Case"))
+				System.out.println("beanName : " + name + " , bean : " + value.getClass());
+			if (name.equalsIgnoreCase("validationCase1"))
+				System.out.println("validationCase1.value : " + ((ValidationCase) value).getValue());
+		});
 
-		Object bean = ValidationHolder.getValidation("validationCase1");
-		System.out.println(((ValidationCase)bean).getValue());
-		
-		bean = ValidationHolder.getValidation("validationCase2");
-		System.out.println(((ValidationCase2)bean).getValue());
 	}
 
 }
