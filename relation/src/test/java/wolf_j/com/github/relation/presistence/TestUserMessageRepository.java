@@ -34,7 +34,7 @@ public class TestUserMessageRepository {
 	UserMessageRepository userMessageRepositoryTest;
 
 	@Test
-	public void testUserMessageRepositoryInsertedUserNessageSucess() {
+	public void testUserMessageRepositoryInsertedUserMessageSuccess() {
 
 		UserMessageEntity userMessageEntity = new UserMessageEntity("一三", "黄", null, null, null, null, null, null);
 		userMessageRepositoryTest.save(userMessageEntity);
