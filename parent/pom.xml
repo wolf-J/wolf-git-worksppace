@@ -79,6 +79,5 @@
 	<modules>
 		<module>Common</module>
 		<module>Web</module>
-		<module>boot-spring</module>
 	</modules>
 </project>
