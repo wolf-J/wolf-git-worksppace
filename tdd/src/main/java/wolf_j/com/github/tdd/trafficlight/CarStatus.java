@@ -1,7 +1,7 @@
 /**
  * 
  */
-package wolf_j.com.github.tdd.trafficlight.nondirectional;
+package wolf_j.com.github.tdd.trafficlight;
 
 /**
  * @author wolf

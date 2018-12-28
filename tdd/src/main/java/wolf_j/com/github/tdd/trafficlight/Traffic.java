@@ -1,9 +1,10 @@
 /**
  * 
  */
-package wolf_j.com.github.tdd.trafficlight.nondirectional;
+package wolf_j.com.github.tdd.trafficlight;
 
 import wolf_j.com.github.tdd.trafficlight.directional.DeTrafficLight;
+import wolf_j.com.github.tdd.trafficlight.nondirectional.NoDeTrafficLight;
 
 /**
  * @author wolf

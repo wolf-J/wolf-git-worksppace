@@ -7,8 +7,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import wolf_j.com.github.tdd.trafficlight.nondirectional.Permission;
-import wolf_j.com.github.tdd.trafficlight.nondirectional.Traffic;
+import wolf_j.com.github.tdd.trafficlight.CarStatus;
+import wolf_j.com.github.tdd.trafficlight.Deriction;
+import wolf_j.com.github.tdd.trafficlight.Permission;
+import wolf_j.com.github.tdd.trafficlight.Traffic;
 import wolf_j.com.github.tdd.trafficlight.nondirectional.NoDeTrafficLight;
 
 /**
