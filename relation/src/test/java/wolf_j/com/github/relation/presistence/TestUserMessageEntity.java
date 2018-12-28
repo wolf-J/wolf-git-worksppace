@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * @author ASNPHM6
+ * @author Wolf
  *
  */
 public class TestUserMessageEntity {
@@ -31,7 +31,7 @@ public class TestUserMessageEntity {
 		assertFalse(userMessageEntity.validateBirthDay());
 		
 		userMessageEntity.setBirthDay("2018-11-02");
-		assertFalse(userMessageEntity.validateBirthDay());
+		assertTrue(userMessageEntity.validateBirthDay());
 	}
 
 }
