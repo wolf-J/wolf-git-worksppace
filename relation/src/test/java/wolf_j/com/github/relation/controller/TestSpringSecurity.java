@@ -3,11 +3,6 @@
  */
 package wolf_j.com.github.relation.controller;
 
-import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +12,13 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
+import wolf_j.com.github.relation.config.security.UserService;
 import wolf_j.com.github.relation.service.RegisterService;
+
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * @author wolf-J
@@ -26,7 +26,7 @@ import wolf_j.com.github.relation.service.RegisterService;
  */
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(controllers = { HomePageController.class, RegisterController.class }, secure = true)
+@WebMvcTest(controllers = { HomePageController.class, RegisterController.class })
 public class TestSpringSecurity {
 
 	@Autowired
@@ -35,11 +35,14 @@ public class TestSpringSecurity {
 	@MockBean(name = "registerOrdinaryUserServiceImpl")
 	RegisterService registerOrdinaryUserServiceImpl;
 
+	@MockBean
+	UserService userService;
+
 	@Test
 	@WithMockUser(username = "wolf-j")
 	public void testHomePageControllerReturnHomePageWhenGetEmpty() throws Exception {
 
-		this.mvc.perform(get("").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
+		this.mvc.perform(get("/index").accept(MediaType.TEXT_HTML)).andExpect(status().isOk())
 				.andExpect(content().contentType("text/html;charset=UTF-8"))
 				.andExpect(authenticated().withUsername("wolf-j"));
 

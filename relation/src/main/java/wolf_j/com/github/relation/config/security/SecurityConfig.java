@@ -23,11 +23,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
+	private final Log logger = LogFactory.getLog(SecurityConfig.class);
+
 	@Autowired
 	UserService userService;
-	private final Log logger = LogFactory.getLog(SecurityConfig.class);
-	
 	
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
