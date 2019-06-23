@@ -11,22 +11,22 @@ import wolf_j.com.github.tdd.trafficlight.CarStatus;
 import wolf_j.com.github.tdd.trafficlight.Deriction;
 import wolf_j.com.github.tdd.trafficlight.Permission;
 import wolf_j.com.github.tdd.trafficlight.Traffic;
-import wolf_j.com.github.tdd.trafficlight.nondirectional.NoDeTrafficLight;
+import wolf_j.com.github.tdd.trafficlight.nondirectional.NonDirectionalTrafficLight;
 
 /**
  * @author wolf
  *
  */
-class DeTrafficLightTest {
+class DirectionalTrafficLightTest {
 
 	@Test
 	void testGetPermissionsWhenGiveRedlightsAndStraightCrossedLineCar() {
 
-		DeTrafficLight deTrafficLight = new DeTrafficLight(NoDeTrafficLight.REDLIGHT, NoDeTrafficLight.REDLIGHT, NoDeTrafficLight.REDLIGHT);
+		DirectionalTrafficLight directionalTrafficLight = new DirectionalTrafficLight(NonDirectionalTrafficLight.REDLIGHT, NonDirectionalTrafficLight.REDLIGHT, NonDirectionalTrafficLight.REDLIGHT);
 
 		CarStatus carStatus = new CarStatus(Deriction.STRAIGHT, true);
 
-		Permission permission = Traffic.getPermission(deTrafficLight, carStatus);
+		Permission permission = Traffic.getPermission(directionalTrafficLight, carStatus);
 
 		assertEquals(false, permission.isStraight());
 		assertEquals(false, permission.isTurnLeft());
@@ -37,11 +37,11 @@ class DeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveLeftYellowLightAndLeftCrossedLineCar() {
 
-		DeTrafficLight deTrafficLight = new DeTrafficLight(NoDeTrafficLight.REDLIGHT, NoDeTrafficLight.YELLOWLIGHT, NoDeTrafficLight.REDLIGHT);
+		DirectionalTrafficLight directionalTrafficLight = new DirectionalTrafficLight(NonDirectionalTrafficLight.REDLIGHT, NonDirectionalTrafficLight.YELLOWLIGHT, NonDirectionalTrafficLight.REDLIGHT);
 
 		CarStatus carStatus = new CarStatus(Deriction.LEFT, true);
 
-		Permission permission = Traffic.getPermission(deTrafficLight, carStatus);
+		Permission permission = Traffic.getPermission(directionalTrafficLight, carStatus);
 
 		assertEquals(false, permission.isStraight());
 		assertEquals(true, permission.isTurnLeft());
@@ -52,11 +52,11 @@ class DeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveLeftYellowLightAndLeftNotCrossedLineCar() {
 
-		DeTrafficLight deTrafficLight = new DeTrafficLight(NoDeTrafficLight.REDLIGHT, NoDeTrafficLight.YELLOWLIGHT, NoDeTrafficLight.REDLIGHT);
+		DirectionalTrafficLight directionalTrafficLight = new DirectionalTrafficLight(NonDirectionalTrafficLight.REDLIGHT, NonDirectionalTrafficLight.YELLOWLIGHT, NonDirectionalTrafficLight.REDLIGHT);
 
 		CarStatus carStatus = new CarStatus(Deriction.LEFT, false);
 
-		Permission permission = Traffic.getPermission(deTrafficLight, carStatus);
+		Permission permission = Traffic.getPermission(directionalTrafficLight, carStatus);
 
 		assertEquals(false, permission.isStraight());
 		assertEquals(false, permission.isTurnLeft());
@@ -68,11 +68,11 @@ class DeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveLeftGreenLightAndRightNotCrossedLineCar() {
 
-		DeTrafficLight deTrafficLight = new DeTrafficLight(NoDeTrafficLight.REDLIGHT, NoDeTrafficLight.YELLOWLIGHT, NoDeTrafficLight.GREENLIGHT);
+		DirectionalTrafficLight directionalTrafficLight = new DirectionalTrafficLight(NonDirectionalTrafficLight.REDLIGHT, NonDirectionalTrafficLight.YELLOWLIGHT, NonDirectionalTrafficLight.GREENLIGHT);
 
 		CarStatus carStatus = new CarStatus(Deriction.RIGHT, false);
 
-		Permission permission = Traffic.getPermission(deTrafficLight, carStatus);
+		Permission permission = Traffic.getPermission(directionalTrafficLight, carStatus);
 
 		assertEquals(false, permission.isStraight());
 		assertEquals(false, permission.isTurnLeft());

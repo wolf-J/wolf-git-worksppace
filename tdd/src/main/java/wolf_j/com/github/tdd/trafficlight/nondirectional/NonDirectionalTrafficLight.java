@@ -7,13 +7,13 @@ package wolf_j.com.github.tdd.trafficlight.nondirectional;
  * @author wolf
  *
  */
-public enum NoDeTrafficLight {
+public enum NonDirectionalTrafficLight {
 	
 	REDLIGHT("red"), YELLOWLIGHT("yellow"),GREENLIGHT("green");
 	
 	private final String color;
 	
-	private NoDeTrafficLight(String color) {
+	private NonDirectionalTrafficLight(String color) {
 		this.color = color;
 	}
 

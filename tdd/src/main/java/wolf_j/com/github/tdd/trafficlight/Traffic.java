@@ -3,8 +3,8 @@
  */
 package wolf_j.com.github.tdd.trafficlight;
 
-import wolf_j.com.github.tdd.trafficlight.directional.DeTrafficLight;
-import wolf_j.com.github.tdd.trafficlight.nondirectional.NoDeTrafficLight;
+import wolf_j.com.github.tdd.trafficlight.directional.DirectionalTrafficLight;
+import wolf_j.com.github.tdd.trafficlight.nondirectional.NonDirectionalTrafficLight;
 
 /**
  * @author wolf
@@ -12,34 +12,34 @@ import wolf_j.com.github.tdd.trafficlight.nondirectional.NoDeTrafficLight;
  */
 public class Traffic {
 
-	public static Permission getPermission(NoDeTrafficLight noDeTrafficLight, CarStatus carStatus) {
+	public static Permission getPermission(NonDirectionalTrafficLight nonDirectionalTrafficLight, CarStatus carStatus) {
 
-		if (noDeTrafficLight.compareTo(NoDeTrafficLight.REDLIGHT) == 0)
+		if (nonDirectionalTrafficLight.compareTo(NonDirectionalTrafficLight.REDLIGHT) == 0)
 			return new Permission(false, true, true);
-		if (noDeTrafficLight.compareTo(NoDeTrafficLight.YELLOWLIGHT) == 0) {
+		if (nonDirectionalTrafficLight.compareTo(NonDirectionalTrafficLight.YELLOWLIGHT) == 0) {
 			if (carStatus.isCrossedYellowLine())
 				return new Permission(true, true, false);
 			return new Permission(false, true, false);
 		}
-		if (noDeTrafficLight.compareTo(NoDeTrafficLight.GREENLIGHT) == 0)
+		if (nonDirectionalTrafficLight.compareTo(NonDirectionalTrafficLight.GREENLIGHT) == 0)
 			return new Permission(true, true, false);
 		return null;
 	}
 
-	public static Permission getPermission(DeTrafficLight deTrafficLight, CarStatus carStatus) {
+	public static Permission getPermission(DirectionalTrafficLight directionalTrafficLight, CarStatus carStatus) {
 
 		Permission permission = new Permission();
-		permission.setStraight(isAccessOfDeTrafficLight(carStatus, deTrafficLight.getStraightLight()));
-		permission.setTurnLeft(isAccessOfDeTrafficLight(carStatus, deTrafficLight.getLeftLight()));
-		permission.setTurnRight(isAccessOfDeTrafficLight(carStatus, deTrafficLight.getRightLight()));
+		permission.setStraight(isAccessOfDeTrafficLight(carStatus, directionalTrafficLight.getStraightLight()));
+		permission.setTurnLeft(isAccessOfDeTrafficLight(carStatus, directionalTrafficLight.getLeftLight()));
+		permission.setTurnRight(isAccessOfDeTrafficLight(carStatus, directionalTrafficLight.getRightLight()));
 
 		return permission;
 	}
 
-	private static Boolean isAccessOfDeTrafficLight(CarStatus carStatus, NoDeTrafficLight straightLight) {
-		if (straightLight.compareTo(NoDeTrafficLight.GREENLIGHT) == 0)
+	private static Boolean isAccessOfDeTrafficLight(CarStatus carStatus, NonDirectionalTrafficLight straightLight) {
+		if (straightLight.compareTo(NonDirectionalTrafficLight.GREENLIGHT) == 0)
 			return true;
-		if (straightLight.compareTo(NoDeTrafficLight.YELLOWLIGHT) == 0)
+		if (straightLight.compareTo(NonDirectionalTrafficLight.YELLOWLIGHT) == 0)
 			if (carStatus.isCrossedYellowLine())
 				return true;
 		return false;

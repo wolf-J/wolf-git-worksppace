@@ -11,18 +11,18 @@ import wolf_j.com.github.tdd.trafficlight.CarStatus;
 import wolf_j.com.github.tdd.trafficlight.Deriction;
 import wolf_j.com.github.tdd.trafficlight.Permission;
 import wolf_j.com.github.tdd.trafficlight.Traffic;
-import wolf_j.com.github.tdd.trafficlight.nondirectional.NoDeTrafficLight;
+import wolf_j.com.github.tdd.trafficlight.nondirectional.NonDirectionalTrafficLight;
 
 /**
  * @author wolf
  *
  */
-class NoDeTrafficLightTest {
+class NondirectionalTrafficLightTest {
 
 	@Test
 	void testGetPermissionsWhenGiveRedlightAndStraightCrossedLineCar() {
 
-		NoDeTrafficLight redLight = NoDeTrafficLight.REDLIGHT;
+		NonDirectionalTrafficLight redLight = NonDirectionalTrafficLight.REDLIGHT;
 		CarStatus carStatus = new CarStatus(Deriction.STRAIGHT, true);
 
 		Permission permission = Traffic.getPermission(redLight, carStatus);
@@ -36,7 +36,7 @@ class NoDeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveRedlightAndStraightNotCrossedLineCar() {
 
-		NoDeTrafficLight redLight = NoDeTrafficLight.REDLIGHT;
+		NonDirectionalTrafficLight redLight = NonDirectionalTrafficLight.REDLIGHT;
 		CarStatus carStatus = new CarStatus(Deriction.STRAIGHT, false);
 
 		Permission permission = Traffic.getPermission(redLight, carStatus);
@@ -50,7 +50,7 @@ class NoDeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveRedlightAndLeftNotCrossedLineCar() {
 
-		NoDeTrafficLight redLight = NoDeTrafficLight.REDLIGHT;
+		NonDirectionalTrafficLight redLight = NonDirectionalTrafficLight.REDLIGHT;
 		CarStatus carStatus = new CarStatus(Deriction.LEFT, false);
 
 		Permission permission = Traffic.getPermission(redLight, carStatus);
@@ -64,7 +64,7 @@ class NoDeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveYellowlightAndLeftCrossedLineCar() {
 
-		NoDeTrafficLight yellowLight = NoDeTrafficLight.YELLOWLIGHT;
+		NonDirectionalTrafficLight yellowLight = NonDirectionalTrafficLight.YELLOWLIGHT;
 		CarStatus carStatus = new CarStatus(Deriction.STRAIGHT, true);
 
 		Permission permission = Traffic.getPermission(yellowLight, carStatus);
@@ -78,7 +78,7 @@ class NoDeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveYellowlightAndLeftNotCrossedLineCar() {
 
-		NoDeTrafficLight yellowLight = NoDeTrafficLight.YELLOWLIGHT;
+		NonDirectionalTrafficLight yellowLight = NonDirectionalTrafficLight.YELLOWLIGHT;
 		CarStatus carStatus = new CarStatus(Deriction.STRAIGHT, false);
 
 		Permission permission = Traffic.getPermission(yellowLight, carStatus);
@@ -92,7 +92,7 @@ class NoDeTrafficLightTest {
 	@Test
 	void testGetPermissionsWhenGiveGreenlightAndLeftNotCrossedLineCar() {
 
-		NoDeTrafficLight greenLight = NoDeTrafficLight.GREENLIGHT;
+		NonDirectionalTrafficLight greenLight = NonDirectionalTrafficLight.GREENLIGHT;
 		CarStatus carStatus = new CarStatus(Deriction.STRAIGHT, false);
 
 		Permission permission = Traffic.getPermission(greenLight, carStatus);
