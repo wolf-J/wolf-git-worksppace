@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>welcome to Relation!</title>
+</head>
+<body>
+	name:
+	<p th:text="${user.username}"></p>
+
+	<form th:action="@{/signUp/check}" th:object="${user}" method="post">
+		<p>
+			<input type="text" class="form-control" placeholder="账号"
+				th:field="*{username}"/>
+		</p>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+	</form>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>welcome to Relation!</title>
+
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" th:href="@{css/customer/login.css}" />
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#homepage").click(function() {
+			$(location).attr('href', '/welcome');
+		})
+		$("#showRelationList").click(function() {
+			$(location).attr('href', '/relationlist');
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="container">
+		<button name="homepage" id="homepage" class="btn btn-link">
+			<h2>HomePage</h2>
+		</button>
+		<button name="showRelationList" id="showRelationList"
+			class="btn btn-link"><h2>RelationList</h2></button>
+		<h1 th:inline="text">Hello [[${#request.remoteUser}]],
+			Welcome to Relation! It is my pleasure to be of service to you!</h1>
+		<form class="form-signin" th:action="@{/logout}" method="post">
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				value="Log out">Log out</button>
+		</form>
+	</div>
+</body>
+</html>

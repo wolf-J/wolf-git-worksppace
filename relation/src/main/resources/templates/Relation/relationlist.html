@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>RelationList</title>
+
+<link rel="stylesheet" th:href="@{css/customer/login.css}" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#homepage").click(function() {
+			$(location).attr('href', '/welcome');
+		})
+	})
+</script>
+</head>
+
+<body>
+	<div class="container">
+		<button name="homepage" id="homepage" class="btn btn-link">
+			<h3>主页</h3>
+		</button>
+		<span th:text="${#request.remoteUser}">WebContext</span>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="active">RelationId</th>
+					<th class="success">FullName</th>
+					<th class="warning">Sex</th>
+					<th class="info">What's Up?</th>
+				</tr>
+			</thead>
+			<tr th:each="closePerson : ${closePersons}">
+				<td class="active" th:text="${closePerson.username}"></td>
+				<td class="success" th:text="${closePerson.fullName}"></td>
+				<td class="warning" th:text="${closePerson.sex}"></td>
+				<td class="info" th:text="${closePerson.whatUp}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

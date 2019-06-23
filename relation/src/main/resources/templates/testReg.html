@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+
+<title>Register</title>
+
+<link rel="stylesheet" th:href="@{css/customer/login.css}" />
+<link rel="stylesheet" th:href="@{css/customer/register.css}" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/registerValidatorTest.jsx"></script>
+<script crossorigin
+	src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin
+	src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script
+	src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#homepage").click(function() {
+			$(location).attr('href', '/welcome');
+		});
+	})
+</script>
+
+</head>
+<body>
+	<div class="divAll">
+		   
+		<div id="titles">新用户注册</div>
+		   
+		<div id="contents">
+			   
+			<h3>&nbsp;基本信息</h3>
+			   
+			<hr width="95%" color="#f2f2f2" />
+			   
+			<form action="#" method="post">
+				    
+				<div id="form-itemGroup">
+					      <label for="userName">用户名：</label>       <input type="text"
+						id="userName" name="userName" class="userName" onBlur="checkUserName()"
+						oninput="checkUserName()">       <span class="default"
+						id="nameErr">请输入6-20位的用户名</span>     
+				</div>
+				    
+				<div id="form-itemGroup">
+					      <label for="userPasword">密码：</label>       <input
+						type="password" id="userPasword" class="userPasword"
+						onBlur="checkPassword()" oninput="checkPassword()">       <span
+						class="default" id="passwordErr">请输入6-20位的密码</span>     
+				</div>
+				    
+				<div id="form-itemGroup">
+					      <label for="userConfirmPasword">确认密码：</label>       <input
+						type="password" id="userConfirmPasword" class="userConfirmPasword"
+						onBlur="ConfirmPassword()" oninput="ConfirmPassword()">
+					      <span class="default" id="conPasswordErr">请再输入一遍密码</span>
+					    
+				</div>
+				    
+				<div id="form-itemGroup">
+					      <label for="userPhone">手机号码：</label>       <input type="text"
+						id="userPhone" class="userPhone">      <span
+						class="default" id="phoneErr">请输入正确的手机号码</span>     
+				</div>
+				    
+				<div>
+					     
+					<button type="submit" class="divBtn">注册</button>
+					    
+				</div>
+				   
+			</form>
+			   
+		</div>
+		 
+	</div>
+</body>
+</html>

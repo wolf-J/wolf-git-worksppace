@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>welcome to Relation!</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
+
+<script crossorigin
+	src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin
+	src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script
+	src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<script type="text/babel" src="js/index.jsx">
+    </script>
+</head>
+<body>
+
+	<div id="homepage"></div>
+
+	<div id="example"></div>
+
+	<div id="root"></div>
+
+	<div id="ajax"></div>
+
+	<div id="form"></div>
+
+
+
+	<script type="text/babel">
+class NameForm extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {value: ''};
+
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      this.setState({value: event.target.value});
+    }
+
+    handleSubmit(event) {
+      alert('A name was submitted: ' + this.state.value);
+      event.preventDefault();
+    }
+
+    render() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      );
+    }
+  }
+
+  ReactDOM.render(
+    <NameForm />,
+    document.getElementById('form')
+  );
+</script>
+
+	<h1>--------------</h1>
+	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="log out" />
+	</form>
+
+	<form th:action="@{/test/file}" th:method="post"
+		enctype="multipart/form-data">
+		<input th:type="file" th:name="file"> <input th:type="submit"
+			th:value="uploadFile">
+	</form>
+</body>
+</html>
