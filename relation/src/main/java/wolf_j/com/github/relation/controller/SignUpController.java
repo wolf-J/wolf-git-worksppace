@@ -24,7 +24,7 @@ public class SignUpController {
 	}
 
 	@RequestMapping(value = "/check")
-	public String checkAndStorege(@ModelAttribute("user") UserFromFrontEnd userVO, Model model) {
+	public String checkAndStorage(@ModelAttribute("user") UserFromFrontEnd userVO, Model model) {
 		model.addAttribute("user", userVO);
 		System.err.println(userVO.getUsername());
 		return "signUpSuccess";

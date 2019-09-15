@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -57,7 +58,7 @@ public class ControllerInterceptor {
 
 		LOGGER.info(
 				"current time : " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").format(System.currentTimeMillis()));
-		LOGGER.info("ReturnedObject : " + returnedObject);
+		LOGGER.info("ReturnedObject : " + JSON.toJSONString(returnedObject));
 	}
 
 	@After("logPointCut()")
