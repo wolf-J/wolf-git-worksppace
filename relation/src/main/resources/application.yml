@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
 #    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-#    url: jdbc:sqlserver://localhost:1433;DatabaseName=Relation;integratedSecurity=false;sendStringParametersAsUnicode=false
+#    url: jdbc:sqlserver://localhost:1433;DatabaseName=relation;integratedSecurity=false;sendStringParametersAsUnicode=false
 #    username: sa
 #    password: Password@123
     

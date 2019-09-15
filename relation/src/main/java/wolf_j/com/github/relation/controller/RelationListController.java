@@ -27,9 +27,9 @@ public class RelationListController {
 	RelationListService relationListService;
 
 	@RequestMapping(value = "/relationlist")
-	public String showRelationlist(Model model, @RequestParam(name = "PageIndex", required = false) Integer pageIndex) {
+	public String showRelationList(Model model, @RequestParam(name = "PageIndex", required = false) Integer pageIndex) {
 		List<UserMessageEntity> closePersons = relationListService.getClosePersons(pageIndex);
 		model.addAttribute("closePersons", closePersons);
-		return "Relation/relationlist";
+		return "relation/relationlist";
 	}
 }
